@@ -1,14 +1,14 @@
 {
   "meta": {
-    "shopName": "Hari's Fresh Corner",
-    "shopNameHighlight": "Fresh",
-    "tagline": "Farm-fresh vegetables, seasonal fruits & daily essentials — delivered to your door in Thamel.",
-    "location": "Thamel · Kathmandu",
-    "badgeText": "Thamel · Kathmandu",
-    "whatsappNumber": "9779800000000",
-    "whatsappMessage": "Hello! I'd like to order 🛒",
-    "address": "Chaksibari Marg, Thamel\nKathmandu — 44600\nBagmati Province, Nepal",
-    "phone": "+977 98-XXXXXXXX",
+    "shopName": "सरस्वतीखेल स्मार्ट सेवा - घरायेसी",
+    "shopNameHighlight": "घरायेसी ",
+    "tagline": "आरंभ एक अटुट सम्बन्धको",
+    "location": "बस्पार्कबाट मन्दिर जाने उकालो तर्फ",
+    "badgeText": "सरस्वतीखेल",
+    "whatsappNumber": "9869167724",
+    "whatsappMessage": "नमस्ते ! 🙏 आज के अर्डर गर्न चहानुहुन्छ?  Namaste! What are we ordering today?",
+    "address": "बस्पार्कबाट मन्दिर जाने उकालो तर्फ",
+    "phone": "+977 9869167724",
     "logoUrl": "",
     "faviconUrl": ""
   },
@@ -39,7 +39,7 @@
     "shopNameSize": "clamp(2.8rem,10vw,3.8rem)",
     "sectionTitleSize": "clamp(1.7rem,5vw,2.2rem)",
     "bodySize": "0.9rem",
-    "useDevanagari": false,
+    "useDevanagari": true,
     "devanagariFont": "Mukta",
     "devanagariUrl": "https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&display=swap"
   },
@@ -60,17 +60,17 @@
   "hours": [
     {
       "day": "Mon – Fri",
-      "time": "6:00 AM – 8:00 PM",
+      "time": "8:00 AM – 8:00 PM",
       "closed": false
     },
     {
       "day": "Saturday",
-      "time": "6:00 AM – 9:00 PM",
+      "time": "8:00 AM – 8:00 PM",
       "closed": false
     },
     {
       "day": "Sunday",
-      "time": "7:00 AM – 6:00 PM",
+      "time": "8:00 AM – 8:00 PM",
       "closed": false
     },
     {
@@ -79,17 +79,12 @@
       "closed": false
     },
     {
-      "day": "Public Holidays",
+      "day": "Festivals and Holidays",
       "time": "Verify on WhatsApp",
       "closed": true
     }
   ],
-  "ticker": [
-    {
-      "text": "🆕 Website live",
-      "color": "c1"
-    }
-  ],
+  "ticker": [],
   "whyUs": [
     {
       "icon": "🌿",
@@ -119,31 +114,31 @@
     },
     {
       "id": "fresh-title",
-      "text": "Today's Fresh List"
+      "text": "आजको ताजा सूची | Today's Fresh List"
     },
     {
       "id": "fresh-sub",
-      "text": "All items freshly sourced each morning. Prices in NPR per unit shown."
+      "text": "मूल्य | Prices shown per unit."
     },
     {
       "id": "update-note",
-      "text": "📌 Prices update daily. Items sell out fast — WhatsApp us before 8 AM to reserve your order and guarantee freshness."
+      "text": "📌 हाम्रोमा मूल्यहरू दैनिक रूपमा अपडेट हुने गर्दछन्। सामानको माग उच्च हुने भएकोले स्टक चाँडै सकिन सक्छ। सामानको ताजापन र समयमै उपलब्धता सुनिश्चित गर्नका लागि बिहान ११ बजेभन्दा अगाडि नै हामीलाई WhatsApp मार्फत अर्डर पठाउनुहोला।\nPrices update daily. Items sell out fast. Best to WhatsApp us before 11 AM to reserve your order and guarantee freshness."
     },
     {
       "id": "why-label",
-      "text": "Why Neighbours Trust Us"
+      "text": "छिमेकीहरूको विश्वासको आधार | Why Neighbors Trust Us"
     },
     {
       "id": "why-title",
-      "text": "Our Promise to Thamel"
+      "text": "सरस्वतीखेलका लागि हाम्रो बाचा | Our Promise to Saraswotikhel"
     },
     {
       "id": "footer-brand-tagline",
-      "text": "Your neighbourhood's most trusted source for daily-fresh produce and essentials in the heart of Thamel."
+      "text": "सरस्वतीखेलको मुटुमा, दैनिक ताजा सामग्री र आवश्यक वस्तुहरूका लागि तपाईंको छिमेककै सबैभन्दा भरपर्दो पसल।\nYour neighborhood's most trusted source for daily-fresh produce and essentials in the heart of Saraswotikhel."
     },
     {
       "id": "footer-note",
-      "text": "Serving the neighbourhood with freshness 🌿"
+      "text": "सरस्वतीखेल समुदायको सेवामा सधैं ताजा र स्वस्थ सामग्रीहरूका साथ समर्पित। | Serving the neighborhood with freshness 🌿"
     }
   ],
   "categories": [
@@ -154,7 +149,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17758843546720.545977265330087",
+          "id": "item17758894658040.8861534645391156",
           "imageUrl": "",
           "name": "Spinach",
           "unit": "per bunch",
@@ -162,7 +157,7 @@
           "badge": "hot"
         },
         {
-          "id": "item17758843546720.6880347118779302",
+          "id": "item17758894658040.3341603701778467",
           "imageUrl": "",
           "name": "Tomatoes",
           "unit": "per kg",
@@ -170,7 +165,7 @@
           "badge": ""
         },
         {
-          "id": "item17758843546720.5114241399443603",
+          "id": "item17758894658040.7025449588397717",
           "imageUrl": "",
           "name": "Potatoes",
           "unit": "per kg",
@@ -178,7 +173,7 @@
           "badge": "sale"
         },
         {
-          "id": "item17758843546720.8211629365861539",
+          "id": "item17758894658040.2776291290207601",
           "imageUrl": "",
           "name": "Onions",
           "unit": "per kg",
@@ -186,7 +181,7 @@
           "badge": ""
         },
         {
-          "id": "item17758843546720.8796687321572497",
+          "id": "item17758894658040.38785228927534543",
           "imageUrl": "",
           "name": "Carrots",
           "unit": "per kg",
@@ -194,7 +189,7 @@
           "badge": ""
         },
         {
-          "id": "item17758843546720.39562492541750083",
+          "id": "item17758894658040.5094834425006386",
           "imageUrl": "",
           "name": "Cauliflower",
           "unit": "per piece",
@@ -202,7 +197,7 @@
           "badge": "hot"
         },
         {
-          "id": "item17758843546720.9211333280970939",
+          "id": "item17758894658040.7698767585460041",
           "imageUrl": "",
           "name": "Bitter Gourd",
           "unit": "per kg",
@@ -210,7 +205,7 @@
           "badge": ""
         },
         {
-          "id": "item17758843546720.9353369061848841",
+          "id": "item17758894658040.47886875643984306",
           "imageUrl": "",
           "name": "Green Chilli",
           "unit": "per 100g",
@@ -226,7 +221,7 @@
       "iconBg": "#e8880a",
       "items": [
         {
-          "id": "item17758843546720.3167041786550612",
+          "id": "item17758894658040.5370652918018107",
           "imageUrl": "",
           "name": "Banana",
           "unit": "per dozen",
@@ -234,7 +229,7 @@
           "badge": "hot"
         },
         {
-          "id": "item17758843546720.2168924558004146",
+          "id": "item17758894658040.36740253069723516",
           "imageUrl": "",
           "name": "Papaya",
           "unit": "per kg",
@@ -242,7 +237,7 @@
           "badge": "sale"
         },
         {
-          "id": "item17758843546720.304566991279389",
+          "id": "item17758894658040.3014310036784562",
           "imageUrl": "",
           "name": "Apple",
           "unit": "per kg",
@@ -250,7 +245,7 @@
           "badge": ""
         },
         {
-          "id": "item17758843546720.4767249991840067",
+          "id": "item17758894658040.7085129738600836",
           "imageUrl": "",
           "name": "Guava",
           "unit": "per kg",
@@ -258,7 +253,7 @@
           "badge": ""
         },
         {
-          "id": "item17758843546720.04029129526655739",
+          "id": "item17758894658040.6679904790172908",
           "imageUrl": "",
           "name": "Lemon",
           "unit": "per piece",
@@ -274,7 +269,7 @@
       "iconBg": "#1e9fd4",
       "items": [
         {
-          "id": "item17758843546720.2524115370619392",
+          "id": "item17758894658040.8817886318493471",
           "imageUrl": "",
           "name": "Eggs",
           "unit": "per dozen",
@@ -282,7 +277,7 @@
           "badge": "hot"
         },
         {
-          "id": "item17758843546720.020815588180642552",
+          "id": "item17758894658040.5346766495553907",
           "imageUrl": "",
           "name": "Dahi (Curd)",
           "unit": "500ml",
@@ -290,7 +285,7 @@
           "badge": ""
         },
         {
-          "id": "item17758843546720.5176201164490373",
+          "id": "item17758894658040.2200302263083581",
           "imageUrl": "",
           "name": "Milk",
           "unit": "per litre",
@@ -298,7 +293,7 @@
           "badge": ""
         },
         {
-          "id": "item17758843546720.7202983790691466",
+          "id": "item17758894658040.5930313058682051",
           "imageUrl": "",
           "name": "Mustard Oil",
           "unit": "per litre",
@@ -306,7 +301,7 @@
           "badge": "sale"
         },
         {
-          "id": "item17758843546720.9352777848636397",
+          "id": "item17758894658040.31896853537766123",
           "imageUrl": "",
           "name": "Ginger",
           "unit": "per 100g",
@@ -314,7 +309,7 @@
           "badge": ""
         },
         {
-          "id": "item17758843546720.9114274003460349",
+          "id": "item17758894658040.4060503477598607",
           "imageUrl": "",
           "name": "Garlic",
           "unit": "per 100g",

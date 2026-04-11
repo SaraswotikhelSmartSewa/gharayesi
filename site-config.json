@@ -149,26 +149,26 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17758935462790.4515571998023413",
+          "id": "item17758937955810.5978772727759105",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "name": "आलु • Potato",
-          "unit": "per kg",
+          "unit": "किलो • kg",
           "price": 30,
           "badge": "hot"
         },
         {
-          "id": "item17758935462790.4697026558068734",
+          "id": "item17758937955810.7003998769546024",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "name": "आलु • Potato",
-          "unit": "per धार्नी • dharni",
+          "unit": "धार्नी • dharni",
           "price": 60,
           "badge": "hot"
         },
         {
-          "id": "item17758935462790.017328381394975723",
-          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png",
+          "id": "item17758937955810.6384380426858643",
+          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "name": "प्याज • Onion",
-          "unit": "per kg",
+          "unit": "किलो • kg",
           "price": 30,
           "badge": "hot"
         }

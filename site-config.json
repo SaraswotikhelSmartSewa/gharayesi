@@ -45,7 +45,7 @@
   },
   "stats": [
     {
-      "number": "6 AM",
+      "number": "8 AM",
       "label": "Opens Daily"
     },
     {
@@ -88,23 +88,23 @@
   "whyUs": [
     {
       "icon": "🌿",
-      "title": "Farm Direct",
-      "desc": "Sourced each morning from local farms in Bhaktapur & Lalitpur. No middlemen, no cold storage."
+      "title": "ताजा उत्पादन • Fresh products",
+      "desc": "हरेक दिन ताजा ल्याइने • कोल्ड स्टोरमा नराखिएको ।\nDaily sourced, no cold storage."
     },
     {
       "icon": "⚡",
-      "title": "Same-Day Delivery",
-      "desc": "Order by 10 AM, receive by noon — on foot within 1 km, including hotels & guesthouses."
+      "title": "आजको अर्डर, आजै डेलिभरी • Same-Day Delivery",
+      "desc": "तपाईंको आफ्नै टोलबाट द्रुत डेलिभरी • छिटो र छरितो स्थानीय सेवा।\nOrder by 10 AM, receive by noon • sold and delivered locally."
     },
     {
       "icon": "💬",
-      "title": "WhatsApp First",
-      "desc": "No app, no account. Message your list and pay on delivery. As simple as it gets."
+      "title": "सजिलो WhatsApp अर्डर • WhatsApp easy order",
+      "desc": "WhatsApp अर्डर: छिटो, छरितो र सजिलो।\nJust type in your order and get them at your door • As easy as it sounds"
     },
     {
       "icon": "🤝",
-      "title": "Fair Prices",
-      "desc": "Pegged to the daily Kalimati wholesale market rate. You always get a fair deal."
+      "title": "टोलभरिमै सबैभन्दा उचित मूल्य • Fair Prices",
+      "desc": "पारदर्शी मूल्य: \"हाम्रो मूल्य सिधै कालिमाटीको थोक बजार भाउमा आधारित छ • उचित दर र पूर्ण विश्वासको ग्यारेन्टी।\nNext to the daily Kalimati wholesale market rate. You always get a fair deal."
     }
   ],
   "sections": [
@@ -114,11 +114,11 @@
     },
     {
       "id": "fresh-title",
-      "text": "आजको ताजा सूची | Today's Fresh List"
+      "text": "आजको ताजा सूची • Today's Fresh List"
     },
     {
       "id": "fresh-sub",
-      "text": "मूल्य | Prices shown per unit."
+      "text": "मूल्य • Prices shown per unit."
     },
     {
       "id": "update-note",
@@ -126,11 +126,11 @@
     },
     {
       "id": "why-label",
-      "text": "छिमेकीहरूको विश्वासको आधार | Why Neighbors Trust Us"
+      "text": "छिमेकीहरूको विश्वासको आधार • Why Neighbors Trust Us"
     },
     {
       "id": "why-title",
-      "text": "सरस्वतीखेलका लागि हाम्रो बाचा | Our Promise to Saraswotikhel"
+      "text": "सरस्वतीखेलका लागि हाम्रो बाचा • Our Promise to Saraswotikhel"
     },
     {
       "id": "footer-brand-tagline",
@@ -138,183 +138,39 @@
     },
     {
       "id": "footer-note",
-      "text": "सरस्वतीखेल समुदायको सेवामा सधैं ताजा र स्वस्थ सामग्रीहरूका साथ समर्पित। | Serving the neighborhood with freshness 🌿"
+      "text": "सरस्वतीखेल समुदायको सेवामा सधैं ताजा र स्वस्थ सामग्रीहरूका साथ समर्पित। • Serving the neighborhood with freshness 🌿"
     }
   ],
   "categories": [
     {
       "id": "cat0",
-      "name": "Vegetables",
-      "icon": "🥬",
+      "name": "New Category",
+      "icon": "📦",
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17758894658040.8861534645391156",
-          "imageUrl": "",
-          "name": "Spinach",
-          "unit": "per bunch",
+          "id": "item17758931154360.6344297205749384",
+          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png",
+          "name": "आलु • Potato",
+          "unit": "per kg",
           "price": 30,
           "badge": "hot"
         },
         {
-          "id": "item17758894658040.3341603701778467",
-          "imageUrl": "",
-          "name": "Tomatoes",
-          "unit": "per kg",
-          "price": 80,
-          "badge": ""
-        },
-        {
-          "id": "item17758894658040.7025449588397717",
-          "imageUrl": "",
-          "name": "Potatoes",
-          "unit": "per kg",
-          "price": 40,
-          "badge": "sale"
-        },
-        {
-          "id": "item17758894658040.2776291290207601",
-          "imageUrl": "",
-          "name": "Onions",
-          "unit": "per kg",
-          "price": 60,
-          "badge": ""
-        },
-        {
-          "id": "item17758894658040.38785228927534543",
-          "imageUrl": "",
-          "name": "Carrots",
-          "unit": "per kg",
-          "price": 70,
-          "badge": ""
-        },
-        {
-          "id": "item17758894658040.5094834425006386",
-          "imageUrl": "",
-          "name": "Cauliflower",
-          "unit": "per piece",
-          "price": 50,
-          "badge": "hot"
-        },
-        {
-          "id": "item17758894658040.7698767585460041",
-          "imageUrl": "",
-          "name": "Bitter Gourd",
-          "unit": "per kg",
-          "price": 90,
-          "badge": ""
-        },
-        {
-          "id": "item17758894658040.47886875643984306",
-          "imageUrl": "",
-          "name": "Green Chilli",
-          "unit": "per 100g",
-          "price": 20,
-          "badge": ""
-        }
-      ]
-    },
-    {
-      "id": "cat1",
-      "name": "Fruits",
-      "icon": "🍎",
-      "iconBg": "#e8880a",
-      "items": [
-        {
-          "id": "item17758894658040.5370652918018107",
-          "imageUrl": "",
-          "name": "Banana",
-          "unit": "per dozen",
+          "id": "item17758931154360.8523190143109165",
+          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png",
+          "name": "आलु • Potato",
+          "unit": "per धार्नी • dharni",
           "price": 60,
           "badge": "hot"
         },
         {
-          "id": "item17758894658040.36740253069723516",
-          "imageUrl": "",
-          "name": "Papaya",
+          "id": "item17758931154360.4231574537505671",
+          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png",
+          "name": "प्याज • Onion",
           "unit": "per kg",
-          "price": 80,
-          "badge": "sale"
-        },
-        {
-          "id": "item17758894658040.3014310036784562",
-          "imageUrl": "",
-          "name": "Apple",
-          "unit": "per kg",
-          "price": 200,
-          "badge": ""
-        },
-        {
-          "id": "item17758894658040.7085129738600836",
-          "imageUrl": "",
-          "name": "Guava",
-          "unit": "per kg",
-          "price": 100,
-          "badge": ""
-        },
-        {
-          "id": "item17758894658040.6679904790172908",
-          "imageUrl": "",
-          "name": "Lemon",
-          "unit": "per piece",
-          "price": 10,
-          "badge": ""
-        }
-      ]
-    },
-    {
-      "id": "cat2",
-      "name": "Daily Essentials",
-      "icon": "🛒",
-      "iconBg": "#1e9fd4",
-      "items": [
-        {
-          "id": "item17758894658040.8817886318493471",
-          "imageUrl": "",
-          "name": "Eggs",
-          "unit": "per dozen",
-          "price": 220,
-          "badge": "hot"
-        },
-        {
-          "id": "item17758894658040.5346766495553907",
-          "imageUrl": "",
-          "name": "Dahi (Curd)",
-          "unit": "500ml",
-          "price": 80,
-          "badge": ""
-        },
-        {
-          "id": "item17758894658040.2200302263083581",
-          "imageUrl": "",
-          "name": "Milk",
-          "unit": "per litre",
-          "price": 90,
-          "badge": ""
-        },
-        {
-          "id": "item17758894658040.5930313058682051",
-          "imageUrl": "",
-          "name": "Mustard Oil",
-          "unit": "per litre",
-          "price": 260,
-          "badge": "sale"
-        },
-        {
-          "id": "item17758894658040.31896853537766123",
-          "imageUrl": "",
-          "name": "Ginger",
-          "unit": "per 100g",
           "price": 30,
-          "badge": ""
-        },
-        {
-          "id": "item17758894658040.4060503477598607",
-          "imageUrl": "",
-          "name": "Garlic",
-          "unit": "per 100g",
-          "price": 40,
-          "badge": ""
+          "badge": "hot"
         }
       ]
     }

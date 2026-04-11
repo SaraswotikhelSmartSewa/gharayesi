@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "shopName": "Hari's Fresh Corner",
+    "shopNameHighlight": "Fresh",
+    "tagline": "Farm-fresh vegetables, seasonal fruits & daily essentials — delivered to your door in Thamel.",
+    "location": "Thamel · Kathmandu",
+    "badgeText": "Thamel · Kathmandu",
+    "whatsappNumber": "9779800000000",
+    "whatsappMessage": "Hello! I'd like to order 🛒",
+    "address": "Chaksibari Marg, Thamel\nKathmandu — 44600\nBagmati Province, Nepal",
+    "phone": "+977 98-XXXXXXXX",
+    "logoUrl": "",
+    "faviconUrl": ""
+  },
+  "theme": {
+    "colorCream": "#fdf6ec",
+    "colorBark": "#3b2a1a",
+    "colorLeaf": "#2e7d45",
+    "colorSaffron": "#e8880a",
+    "colorMango": "#fbbf24",
+    "colorTomato": "#e03535",
+    "colorSky": "#1e9fd4",
+    "colorLavender": "#7c5cbf",
+    "colorChili": "#d14b0f",
+    "colorWhatsapp": "#25D366",
+    "bgMain": "#fdf6ec",
+    "bgHeader": "#2e7d45",
+    "bgWhy": "#3b2a1a",
+    "bgFooter": "#241809",
+    "grainOpacity": "0.04"
+  },
+  "fonts": {
+    "headingFont": "Playfair Display",
+    "bodyFont": "DM Sans",
+    "monoFont": "Space Mono",
+    "headingFontUrl": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap",
+    "bodyFontUrl": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap",
+    "monoFontUrl": "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap",
+    "shopNameSize": "clamp(2.8rem,10vw,3.8rem)",
+    "sectionTitleSize": "clamp(1.7rem,5vw,2.2rem)",
+    "bodySize": "0.9rem",
+    "useDevanagari": false,
+    "devanagariFont": "Mukta",
+    "devanagariUrl": "https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&display=swap"
+  },
+  "stats": [
+    { "number": "6 AM", "label": "Opens Daily" },
+    { "number": "8 PM", "label": "Last Order" },
+    { "number": "4.9★", "label": "Local Rating" }
+  ],
+  "hours": [
+    { "day": "Mon – Fri",       "time": "6:00 AM – 8:00 PM", "closed": false },
+    { "day": "Saturday",        "time": "6:00 AM – 9:00 PM", "closed": false },
+    { "day": "Sunday",          "time": "7:00 AM – 6:00 PM", "closed": false },
+    { "day": "Dashain / Tihar", "time": "Special Hours",     "closed": false },
+    { "day": "Public Holidays", "time": "Verify on WhatsApp","closed": true  }
+  ],
+  "ticker": [
+    { "text": "🛵  Free delivery within 1 km on orders above Rs. 500", "color": "c1" },
+    { "text": "🌅  Fresh stock arrives every morning at 6 AM sharp",   "color": "c2" },
+    { "text": "📲  WhatsApp your order by 10 AM for noon delivery",    "color": "c3" },
+    { "text": "🥕  Organic carrots & spinach now in stock!",           "color": "c4" },
+    { "text": "🎉  Loyal customers get a 5% discount — just ask!",    "color": "c5" },
+    { "text": "🌶️  Chilli & ginger sourced fresh from Chitwan",       "color": "c6" },
+    { "text": "🍳  Eggs restocked — limited quantity daily",           "color": "c7" },
+    { "text": "🏪  Find us at Chaksibari Marg, Thamel",              "color": "c2" }
+  ],
+  "whyUs": [
+    { "icon": "🌿", "title": "Farm Direct",       "desc": "Sourced each morning from local farms in Bhaktapur & Lalitpur. No middlemen, no cold storage." },
+    { "icon": "⚡", "title": "Same-Day Delivery", "desc": "Order by 10 AM, receive by noon — on foot within 1 km, including hotels & guesthouses." },
+    { "icon": "💬", "title": "WhatsApp First",    "desc": "No app, no account. Message your list and pay on delivery. As simple as it gets." },
+    { "icon": "🤝", "title": "Fair Prices",       "desc": "Pegged to the daily Kalimati wholesale market rate. You always get a fair deal." }
+  ],
+  "sections": [
+    { "id": "fresh-label", "text": "Updated Daily" },
+    { "id": "fresh-title", "text": "Today's Fresh List" },
+    { "id": "fresh-sub",   "text": "All items freshly sourced each morning. Prices in NPR per unit shown." },
+    { "id": "update-note", "text": "📌 Prices update daily. Items sell out fast — WhatsApp us before 8 AM to reserve your order and guarantee freshness." },
+    { "id": "why-label",   "text": "Why Neighbours Trust Us" },
+    { "id": "why-title",   "text": "Our Promise to Thamel" },
+    { "id": "footer-brand-tagline", "text": "Your neighbourhood's most trusted source for daily-fresh produce and essentials in the heart of Thamel." },
+    { "id": "footer-note", "text": "Serving the neighbourhood with freshness 🌿" }
+  ],
+  "categories": [
+    {
+      "id": "cat-veg",
+      "name": "Vegetables",
+      "icon": "🥬",
+      "iconBg": "#2e7d45",
+      "items": [
+        { "id": "v1", "name": "Spinach",      "unit": "per bunch", "price": 30,  "badge": "hot",  "imageUrl": "" },
+        { "id": "v2", "name": "Tomatoes",     "unit": "per kg",    "price": 80,  "badge": "",     "imageUrl": "" },
+        { "id": "v3", "name": "Potatoes",     "unit": "per kg",    "price": 40,  "badge": "sale", "imageUrl": "" },
+        { "id": "v4", "name": "Onions",       "unit": "per kg",    "price": 60,  "badge": "",     "imageUrl": "" },
+        { "id": "v5", "name": "Carrots",      "unit": "per kg",    "price": 70,  "badge": "",     "imageUrl": "" },
+        { "id": "v6", "name": "Cauliflower",  "unit": "per piece", "price": 50,  "badge": "hot",  "imageUrl": "" },
+        { "id": "v7", "name": "Bitter Gourd", "unit": "per kg",    "price": 90,  "badge": "",     "imageUrl": "" },
+        { "id": "v8", "name": "Green Chilli", "unit": "per 100g",  "price": 20,  "badge": "",     "imageUrl": "" }
+      ]
+    },
+    {
+      "id": "cat-fruit",
+      "name": "Fruits",
+      "icon": "🍎",
+      "iconBg": "#e8880a",
+      "items": [
+        { "id": "f1", "name": "Banana", "unit": "per dozen", "price": 60,  "badge": "hot",  "imageUrl": "" },
+        { "id": "f2", "name": "Papaya", "unit": "per kg",    "price": 80,  "badge": "sale", "imageUrl": "" },
+        { "id": "f3", "name": "Apple",  "unit": "per kg",    "price": 200, "badge": "",     "imageUrl": "" },
+        { "id": "f4", "name": "Guava",  "unit": "per kg",    "price": 100, "badge": "",     "imageUrl": "" },
+        { "id": "f5", "name": "Lemon",  "unit": "per piece", "price": 10,  "badge": "",     "imageUrl": "" }
+      ]
+    },
+    {
+      "id": "cat-ess",
+      "name": "Daily Essentials",
+      "icon": "🛒",
+      "iconBg": "#1e9fd4",
+      "items": [
+        { "id": "e1", "name": "Eggs",        "unit": "per dozen", "price": 220, "badge": "hot",  "imageUrl": "" },
+        { "id": "e2", "name": "Dahi (Curd)", "unit": "500ml",     "price": 80,  "badge": "",     "imageUrl": "" },
+        { "id": "e3", "name": "Milk",        "unit": "per litre", "price": 90,  "badge": "",     "imageUrl": "" },
+        { "id": "e4", "name": "Mustard Oil", "unit": "per litre", "price": 260, "badge": "sale", "imageUrl": "" },
+        { "id": "e5", "name": "Ginger",      "unit": "per 100g",  "price": 30,  "badge": "",     "imageUrl": "" },
+        { "id": "e6", "name": "Garlic",      "unit": "per 100g",  "price": 40,  "badge": "",     "imageUrl": "" }
+      ]
+    }
+  ]
+}

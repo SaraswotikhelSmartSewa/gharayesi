@@ -2,14 +2,14 @@
   "meta": {
     "shopName": "सरस्वतीखेल स्मार्ट सेवा - घरायेसी",
     "shopNameHighlight": "घरायेसी ",
-    "tagline": "आरंभ एक अटुट सम्बन्धको",
+    "tagline": "सुरुवात एक अटुट सम्बन्धको",
     "location": "बस्पार्कबाट मन्दिर जाने उकालो तर्फ",
     "badgeText": "सरस्वतीखेल",
-    "whatsappNumber": "9869167724",
+    "whatsappNumber": "9709612863",
     "whatsappMessage": "नमस्ते ! 🙏 आज के अर्डर गर्न चहानुहुन्छ?  Namaste! What are we ordering today?",
     "address": "बस्पार्कबाट मन्दिर जाने उकालो तर्फ",
-    "phone": "+977 9869167724",
-    "logoUrl": "",
+    "phone": "+977 9709612863",
+    "logoUrl": "https://github.com/SaraswotikhelSmartSewa/gharayesi/blob/407b26d842bcb2e561136ddc132fc298e36e5550/IMG_20260411_223531.png",
     "faviconUrl": ""
   },
   "theme": {
@@ -40,8 +40,8 @@
     "sectionTitleSize": "clamp(1.7rem,5vw,2.2rem)",
     "bodySize": "0.9rem",
     "useDevanagari": true,
-    "devanagariFont": "Mukta",
-    "devanagariUrl": "https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&display=swap"
+    "devanagariFont": "Tiro Devanagari Hindi",
+    "devanagariUrl": "https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap"
   },
   "stats": [
     {
@@ -149,7 +149,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17758937955810.5978772727759105",
+          "id": "item17759594018200.3549477472123699",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "name": "आलु • Potato",
           "unit": "किलो • kg",
@@ -157,7 +157,7 @@
           "badge": "hot"
         },
         {
-          "id": "item17758937955810.7003998769546024",
+          "id": "item17759594018200.8092997893266927",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "name": "आलु • Potato",
           "unit": "धार्नी • dharni",
@@ -165,7 +165,7 @@
           "badge": "hot"
         },
         {
-          "id": "item17758937955810.6384380426858643",
+          "id": "item17759594018200.5581952787883788",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "name": "प्याज • Onion",
           "unit": "किलो • kg",

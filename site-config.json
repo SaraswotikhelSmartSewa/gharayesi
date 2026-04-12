@@ -142,7 +142,7 @@
       "icon": "]  📲",
       "label": "Facebook",
       "sublabel": "Message us on",
-      "url": "https://www.facebook.com/SaraswotikhelSmartSewa",
+      "url": "https://www.facebook.com/GharayesiSewa",
       "type": "custom",
       "color": "lbtn-blue"
     }
@@ -155,7 +155,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17760067495260.0826105754792662",
+          "id": "item17760076951250.2933641472119536",
           "name": "गोलो आलु • Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "hot",
@@ -171,7 +171,7 @@
           ]
         },
         {
-          "id": "item17760067495260.1367939969286942",
+          "id": "item17760076951250.084878290299647",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "hot",

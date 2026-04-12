@@ -6,7 +6,7 @@
     "location": "सरस्वतीखेल, भक्तपुर (बस्पार्कबाट मन्दिर जाने उकालो तर्फ)",
     "badgeText": "सरस्वतीखेल",
     "whatsappNumber": "9709612863",
-    "whatsappMessage": "नमस्ते ! 🙏 आज के अर्डर गर्न चहानुहुन्छ? Namaste! What are we ordering today?",
+    "whatsappMessage": "Order:                      Name:                Number:            Address:              ",
     "address": "बस्पार्कबाट मन्दिर जाने उकालो तर्फ, सरस्वतीखेल, भक्तपुर",
     "phone": "+977 9709612863",
     "logoUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/gharayesi/refs/heads/main/IMG_20260411_223531.png",
@@ -75,7 +75,7 @@
     },
     {
       "day": "Public Holidays",
-      "time": "Verify on WhatsApp",
+      "time": "Verify on Message or Call",
       "closed": true
     }
   ],
@@ -101,17 +101,17 @@
     {
       "icon": "🌿",
       "title": "ताजा उत्पादन • Fresh products",
-      "desc": "हरेक दिन ताजा ल्याइने • कोल्ड स्टोरमा नराखिएको । Daily sourced, no cold storage."
+      "desc": "हरेक दिन ताजा ल्याइने। कोल्ड स्टोरमा नराखिएको • Daily sourced, no cold storage."
+    },
+    {
+      "icon": "💬",
+      "title": "सजिलो WhatsApp अर्डर",
+      "desc": "तपाईंको अर्डर टाइप गर्नुहोस् र घरमै पाउनुहोस् । सुन्दा जति सजिलो काम पनि त्यति नै सजिलो। • Just type in your order and get them at your door • As easy as it sounds."
     },
     {
       "icon": "⚡",
       "title": "छिटो डेलिभरी • Quick Delivery",
       "desc": "तपाईंको आफ्नै टोलबाट द्रुत डेलिभरी । छिटो र छरितो स्थानीय सेवा • Fast delivery from your own neighborhood. Quick and efficient local service."
-    },
-    {
-      "icon": "💬",
-      "title": "सजिलो WhatsApp अर्डर",
-      "desc": "तपाईंको अर्डर टाइप गर्नुहोस् र घरमै पाउनुहोस् • सुन्दा जति सजिलो, काम पनि त्यति नै सजिलो। • Just type in your order and get them at your door • As easy as it sounds."
     },
     {
       "icon": "🤝",
@@ -125,7 +125,7 @@
     "freshSub": "मूल्य • Prices shown per unit.",
     "update-note": "📌 मूल्यहरू दैनिक रूपमा अपडेट हुन्छन्। ताजापन सुनिश्चित गर्न बिहान ११ बजेभन्दा अगाडि नै अर्डर गर्नुहोला।",
     "whyLabel": "तपाईंका छिमेकीहरूले हामीलाई किन विश्वास गर्छन् त? • Why Neighbors Trust Us",
-    "whyTitle": "सरस्वतीखेलका लागि हाम्रो बाचा • Our promise to Saraswotikhel",
+    "whyTitle": "हाम्रा विशेषताहरू • Our Service",
     "footer-brand-tagline": "सरस्वतीखेलको मुटुमा, दैनिक ताजा सामग्रीका लागि तपाईंको छिमेककै भरपर्दो पसल।",
     "footer-note": "सरस्वतीखेल समुदायको सेवामा समर्पित 🌿"
   },
@@ -147,7 +147,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17760017747660.8450008797154751",
+          "id": "item17760034739750.22357784734154518",
           "name": "गोलो आलु • Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "hot",
@@ -163,7 +163,7 @@
           ]
         },
         {
-          "id": "item17760017747660.34273971958577",
+          "id": "item17760034739750.7820010613298161",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "hot",

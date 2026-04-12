@@ -9,8 +9,8 @@
     "whatsappMessage": "नमस्ते ! 🙏 आज के अर्डर गर्न चहानुहुन्छ?  Namaste! What are we ordering today?",
     "address": "बस्पार्कबाट मन्दिर जाने उकालो तर्फ",
     "phone": "+977 9709612863",
-    "logoUrl": "https://github.com/SaraswotikhelSmartSewa/gharayesi/blob/407b26d842bcb2e561136ddc132fc298e36e5550/IMG_20260411_223531.png",
-    "faviconUrl": ""
+    "logoUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/gharayesi/refs/heads/main/IMG_20260411_223531.png",
+    "faviconUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/gharayesi/refs/heads/main/IMG_20260411_223531.png"
   },
   "theme": {
     "colorCream": "#fdf6ec",
@@ -149,7 +149,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17759594018200.3549477472123699",
+          "id": "item17759608760890.6408472350290215",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "name": "आलु • Potato",
           "unit": "किलो • kg",
@@ -157,7 +157,7 @@
           "badge": "hot"
         },
         {
-          "id": "item17759594018200.8092997893266927",
+          "id": "item17759608760900.8650937005667801",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "name": "आलु • Potato",
           "unit": "धार्नी • dharni",
@@ -165,7 +165,7 @@
           "badge": "hot"
         },
         {
-          "id": "item17759594018200.5581952787883788",
+          "id": "item17759608760900.07543395920796303",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "name": "प्याज • Onion",
           "unit": "किलो • kg",

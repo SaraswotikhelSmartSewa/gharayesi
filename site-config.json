@@ -86,15 +86,15 @@
     },
     {
       "text": "Order from home via WhatsApp! 🏠",
-      "color": "c2"
+      "color": "c1"
     },
     {
       "text": "🎉 नयाँ वर्ष २०८३ को हार्दिक शुभकामना!",
-      "color": "c3"
+      "color": "c2"
     },
     {
       "text": "Happy New Year 2083 BS! 🎉",
-      "color": "c4"
+      "color": "c2"
     }
   ],
   "whyUs": [
@@ -155,7 +155,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17760000362910.619812716108767",
+          "id": "item17760013511150.5475569210335144",
           "name": "गोलो आलु • Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "hot",
@@ -171,7 +171,7 @@
           ]
         },
         {
-          "id": "item17760000362910.4305058602710016",
+          "id": "item17760013511150.3938860162491883",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "hot",
@@ -179,18 +179,6 @@
             {
               "unit": "किलो • kg",
               "price": 50
-            }
-          ]
-        },
-        {
-          "id": "item17760000362910.4311216313437951",
-          "name": "New Item",
-          "imageUrl": "",
-          "badge": "",
-          "prices": [
-            {
-              "unit": "1 kg",
-              "price": 0
             }
           ]
         }

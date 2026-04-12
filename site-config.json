@@ -143,7 +143,7 @@
       "label": "Message us on Facebook",
       "sublabel": "",
       "url": "https://m.me/Zac'E.Awal",
-      "type": "wa",
+      "type": "custom",
       "color": "lbtn-blue"
     }
   ],
@@ -155,7 +155,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17760063933580.2641013383604459",
+          "id": "item17760064917670.9021513658283663",
           "name": "गोलो आलु • Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "hot",
@@ -171,7 +171,7 @@
           ]
         },
         {
-          "id": "item17760063933580.04033488582880129",
+          "id": "item17760064917670.7626857754764029",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "hot",

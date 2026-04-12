@@ -125,7 +125,7 @@
     "freshSub": "मूल्य • Prices shown per unit.",
     "update-note": "📌 मूल्यहरू दैनिक रूपमा अपडेट हुन्छन्। ताजापन सुनिश्चित गर्न बिहान ११ बजेभन्दा अगाडि नै अर्डर गर्नुहोला।",
     "whyLabel": "तपाईंका छिमेकीहरूले हामीलाई किन विश्वास गर्छन् त? • Why Neighbors Trust Us",
-    "whyTitle": "हाम्रा विशेषताहरू • Our Service",
+    "whyTitle": "हाम्रा विशेषता • Our Service",
     "footer-brand-tagline": "सरस्वतीखेलको मुटुमा, दैनिक ताजा सामग्रीका लागि तपाईंको छिमेककै भरपर्दो पसल।",
     "footer-note": "सरस्वतीखेल समुदायको सेवामा समर्पित 🌿"
   },
@@ -147,7 +147,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17760034739750.22357784734154518",
+          "id": "item17760036019470.4975734802379872",
           "name": "गोलो आलु • Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "hot",
@@ -163,7 +163,7 @@
           ]
         },
         {
-          "id": "item17760034739750.7820010613298161",
+          "id": "item17760036019470.6008382180422984",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "hot",

@@ -455,7 +455,7 @@ async function init(){
 
   /* ── meta ── */
   const waUrl=`https://wa.me/${meta.whatsappNumber}?text=${encodeURIComponent(meta.whatsappMessage)}`;
-  document.title=meta.shopName+' — Thamel, Kathmandu';
+  document.title=meta.shopName+' — Saraswotikhel, Bhaktapur';
   document.querySelector('meta[name="description"]').content=meta.tagline;
   if(meta.faviconUrl){const f=document.createElement('link');f.rel='icon';f.href=meta.faviconUrl;document.head.appendChild(f);}
 
@@ -552,7 +552,7 @@ async function init(){
     `<div class="hrow"><span class="hday">${h.day}</span><span class="htime${h.closed?' closed':''}">${h.time}</span></div>`
   ).join('');
   const yr=new Date().getFullYear();
-  document.getElementById('footerCopy').textContent=`© ${yr} ${meta.shopName} · Thamel, Kathmandu`;
+  document.getElementById('footerCopy').textContent=`© ${yr} ${meta.shopName} · Saraswotikhel, Bhaktapur`;
   document.getElementById('footerNote').innerHTML=`${secMap['footer-note']} · Hosted free on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>`;
 
   /* ── date & clock ── */

@@ -44,54 +44,175 @@
     "devanagariUrl": "https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap"
   },
   "stats": [
-    { "number": "8 AM", "label": "Opens Daily" },
-    { "number": "8 PM", "label": "Last Order" },
-    { "number": "4.9★", "label": "Local Rating" }
+    {
+      "number": "8 AM",
+      "label": "दैनिक खुल्ने समय • Opens Daily"
+    },
+    {
+      "number": "8 PM",
+      "label": "दैनिक बन्द हुने समय • Last Order"
+    },
+    {
+      "number": "4.9★",
+      "label": "Local Rating"
+    }
   ],
   "hours": [
-    { "day": "आईतबार - शुक्रबार", "time": "8:00 AM – 8:00 PM", "closed": false },
-    { "day": "शनिबार", "time": "8:00 AM – 9:00 PM", "closed": false },
-    { "day": "Dashain / Tihar", "time": "Special Hours", "closed": false },
-    { "day": "Public Holidays", "time": "Verify on WhatsApp", "closed": true }
+    {
+      "day": "आईतबार - शुक्रबार",
+      "time": "8:00 AM – 8:00 PM",
+      "closed": false
+    },
+    {
+      "day": "शनिबार",
+      "time": "8:00 AM – 8:00 PM",
+      "closed": false
+    },
+    {
+      "day": "Dashain / Tihar",
+      "time": "Special Hours",
+      "closed": false
+    },
+    {
+      "day": "Public Holidays",
+      "time": "Verify on WhatsApp",
+      "closed": true
+    }
   ],
   "ticker": [
-    { "text": "🛵 ताजा तरकारी सिधै तपाईंको घरको ढोकामै", "color": "c1" },
-    { "text": "🌅 ताजा स्टक हरेक बिहान उपलब्ध हुन्छ", "color": "c2" },
-    { "text": "📲 ११ बजेभन्दा अगाडि अर्डर गरी ढुक्क हुनुहोस्", "color": "c3" },
-    { "text": "🤝 कालिमाटीको होलसेल मूल्यमा ताजा सामग्री", "color": "c4" }
+    {
+      "text": "🏠घरमै बसि अर्डर गर्नको लागि ह्वाट्सएप (WhatsApp) मा सम्पर्क गर्नुहोला",
+      "color": "c1"
+    },
+    {
+      "text": "Order from home via WhatsApp! 🏠",
+      "color": "c2"
+    },
+    {
+      "text": "🎉 नयाँ वर्ष २०८३ को हार्दिक शुभकामना!",
+      "color": "c3"
+    },
+    {
+      "text": "Happy New Year 2083 BS! 🎉",
+      "color": "c4"
+    }
   ],
   "whyUs": [
-    { "icon": "🌿", "title": "ताजा उत्पादन • Fresh products", "desc": "हरेक दिन ताजा ल्याइने • कोल्ड स्टोरमा नराखिएको । Daily sourced, no cold storage." },
-    { "icon": "⚡", "title": "छिटो डेलिभरी • Quick Delivery", "desc": "तपाईंको आफ्नै टोलबाट द्रुत डेलिभरी • छिटो र छरितो स्थानीय सेवा।" },
-    { "icon": "💬", "title": "सजिलो WhatsApp अर्डर", "desc": "Just type in your order and get them at your door • As easy as it sounds." },
-    { "icon": "🤝", "title": "उचित मूल्य • Fair Prices", "desc": "हाम्रो मूल्य सिधै कालिमाटीको थोक बजार भाउमा आधारित छ।" }
+    {
+      "icon": "🌿",
+      "title": "ताजा उत्पादन • Fresh products",
+      "desc": "हरेक दिन ताजा ल्याइने • कोल्ड स्टोरमा नराखिएको । Daily sourced, no cold storage."
+    },
+    {
+      "icon": "⚡",
+      "title": "छिटो डेलिभरी • Quick Delivery",
+      "desc": "तपाईंको आफ्नै टोलबाट द्रुत डेलिभरी । छिटो र छरितो स्थानीय सेवा • Fast delivery from your own neighborhood. Quick and efficient local service."
+    },
+    {
+      "icon": "💬",
+      "title": "सजिलो WhatsApp अर्डर",
+      "desc": "तपाईंको अर्डर टाइप गर्नुहोस् र घरमै पाउनुहोस् • सुन्दा जति सजिलो, काम पनि त्यति नै सजिलो। • Just type in your order and get them at your door • As easy as it sounds."
+    },
+    {
+      "icon": "🤝",
+      "title": "उचित मूल्य • Fair Prices",
+      "desc": "हाम्रो मूल्य सिधै कालिमाटीको थोक बजार भाउमा आधारित छ • Our prices are based directly on the Kalimati wholesale market rates."
+    }
   ],
-  "sections": [
-    { "id": "fresh-label", "text": "Updated Daily" },
-    { "id": "fresh-title", "text": "आजको ताजा सूची • Today's Fresh List" },
-    { "id": "fresh-sub", "text": "मूल्य • Prices shown per unit." },
-    { "id": "update-note", "text": "📌 मूल्यहरू दैनिक रूपमा अपडेट हुन्छन्। ताजापन सुनिश्चित गर्न बिहान ११ बजेभन्दा अगाडि नै अर्डर गर्नुहोला।" },
-    { "id": "why-label", "text": "Why Neighbors Trust Us" },
-    { "id": "why-title", "text": "सरस्वतीखेलका लागि हाम्रो बाचा" },
-    { "id": "footer-brand-tagline", "text": "सरस्वतीखेलको मुटुमा, दैनिक ताजा सामग्रीका लागि तपाईंको छिमेककै भरपर्दो पसल।" },
-    { "id": "footer-note", "text": "सरस्वतीखेल समुदायको सेवामा समर्पित 🌿" }
-  ],
+  "sections": {
+    "freshLabel": "Updated Daily",
+    "freshTitle": "आजको ताजा सूची • Today's Fresh List",
+    "freshSub": "मूल्य • Prices shown per unit.",
+    "update-note": "📌 मूल्यहरू दैनिक रूपमा अपडेट हुन्छन्। ताजापन सुनिश्चित गर्न बिहान ११ बजेभन्दा अगाडि नै अर्डर गर्नुहोला।",
+    "whyLabel": "तपाईंका छिमेकीहरूले हामीलाई किन विश्वास गर्छन् त? • Why Neighbors Trust Us",
+    "whyTitle": "सरस्वतीखेलका लागि हाम्रो बाचा • Our promise to Saraswotikhel",
+    "footer-brand-tagline": "सरस्वतीखेलको मुटुमा, दैनिक ताजा सामग्रीका लागि तपाईंको छिमेककै भरपर्दो पसल।",
+    "footer-note": "सरस्वतीखेल समुदायको सेवामा समर्पित 🌿"
+  },
   "links": [
-    { "icon": "📍", "label": "Find Us on Map", "url": "https://maps.app.goo.gl/KnAvfQ67dY2ooY4f7", "color": "lbtn-blue" },
-    { "icon": "💬", "label": "Order on WhatsApp", "url": "https://wa.me/9709612863?text=Namaste", "color": "lbtn-wa" },
-    { "icon": "📞", "label": "Call Us", "url": "tel:+9779709612863", "color": "lbtn-green"}
+    {
+      "icon": "📍",
+      "label": "Find Us on Map",
+      "sublabel": "",
+      "url": "https://maps.app.goo.gl/KnAvfQ67dY2ooY4f7",
+      "type": "custom",
+      "color": "lbtn-blue"
+    },
+    {
+      "icon": "💬",
+      "label": "Order on WhatsApp",
+      "sublabel": "",
+      "url": "https://wa.me/9709612863?text=Namaste",
+      "type": "custom",
+      "color": "lbtn-wa"
+    }
   ],
   "categories": [
     {
-      "id": "cat-veg",
+      "id": "cat0",
       "name": "तरकारीहरू • Vegetables",
       "icon": "🥬",
       "iconBg": "#2e7d45",
       "items": [
-        { "id": "v1", "name": "आलु • Potato", "unit": "किलो • kg", "price": 30, "badge": "hot", "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true" },
-        { "id": "v2", "name": "आलु • Potato", "unit": "धार्नी • dharni", "price": 60, "badge": "hot", "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true" },
-        { "id": "v3", "name": "प्याज • Onion", "unit": "किलो • kg", "price": 30, "badge": "hot", "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true" }
+        {
+          "id": "item17760000362910.619812716108767",
+          "name": "गोलो आलु • Potato",
+          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
+          "badge": "hot",
+          "prices": [
+            {
+              "unit": "किलो • kg",
+              "price": 30
+            },
+            {
+              "unit": "धार्नी • Dharni",
+              "price": 65
+            }
+          ]
+        },
+        {
+          "id": "item17760000362910.4305058602710016",
+          "name": "प्याज • Onion",
+          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
+          "badge": "hot",
+          "prices": [
+            {
+              "unit": "किलो • kg",
+              "price": 50
+            }
+          ]
+        },
+        {
+          "id": "item17760000362910.4311216313437951",
+          "name": "New Item",
+          "imageUrl": "",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "1 kg",
+              "price": 0
+            }
+          ]
+        }
       ]
+    }
+  ],
+  "navLinks": [
+    {
+      "label": "ताजा सूची • Fresh Lists",
+      "anchor": "•  fresh"
+    },
+    {
+      "label": "हाम्रो बाचा • Why us?",
+      "anchor": "•  why"
+    },
+    {
+      "label": "हाम्रो पसल • Our Store",
+      "anchor": "•  findUs"
+    },
+    {
+      "label": "समय • Timings",
+      "anchor": "•  footer-sec"
     }
   ]
 }

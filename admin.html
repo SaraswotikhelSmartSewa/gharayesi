@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Admin — Site Control Panel</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f1117;--surface:#1a1d27;--surface2:#22263a;--border:#2e3354;
+  --accent:#4ade80;--accent2:#fbbf24;--danger:#ef4444;--info:#60a5fa;
+  --text:#e2e8f0;--muted:#94a3b8;--radius:10px;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans','Segoe UI',sans-serif;font-size:14px;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+code{background:var(--surface2);padding:1px 6px;border-radius:4px;font-size:.8rem;color:var(--accent2)}
+
+/* ── LOCK SCREEN ─────────────────────────────────────── */
+#lockScreen{position:fixed;inset:0;background:var(--bg);z-index:9999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.lock-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:40px 48px;display:flex;flex-direction:column;gap:20px;align-items:center;min-width:340px}
+.lock-logo{font-size:2rem;font-weight:900;color:var(--accent)}
+.lock-logo span{color:var(--accent2)}
+.lock-card h2{font-size:1.1rem;color:var(--muted);font-weight:400;text-align:center}
+.lock-input{width:100%;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;padding:11px 16px;color:var(--text);font-size:1rem;outline:none;transition:border-color .2s}
+.lock-input:focus{border-color:var(--accent)}
+.lock-btn{width:100%;background:var(--accent);color:#0f1117;font-weight:700;
+  font-size:.95rem;padding:12px;border-radius:8px;border:none;cursor:pointer;transition:opacity .2s}
+.lock-btn:hover{opacity:.88}
+.lock-err{color:var(--danger);font-size:.82rem;text-align:center;min-height:18px}
+.lock-hint{font-size:.75rem;color:var(--muted);text-align:center}
+
+/* ── LAYOUT ──────────────────────────────────────────── */
+#app{display:none;min-height:100vh}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;height:56px;position:sticky;top:0;z-index:100}
+.topbar-brand{font-weight:900;font-size:1rem;color:var(--accent)}
+.topbar-brand span{color:var(--accent2)}
+.topbar-actions{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;
+  border:none;cursor:pointer;font-size:.83rem;font-weight:600;transition:all .18s}
+.btn-primary{background:var(--accent);color:#0f1117}
+.btn-primary:hover{opacity:.85}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-danger:hover{opacity:.85}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--surface2);color:var(--text)}
+.btn-info{background:var(--info);color:#0f1117}
+.btn-info:hover{opacity:.85}
+.btn-warn{background:var(--accent2);color:#0f1117}
+.btn-warn:hover{opacity:.85}
+.btn-sm{padding:5px 10px;font-size:.76rem}
+
+.main{display:grid;grid-template-columns:220px 1fr;height:calc(100vh - 56px)}
+.sidebar{background:var(--surface);border-right:1px solid var(--border);
+  overflow-y:auto;padding:16px 0}
+.sidebar-item{display:flex;align-items:center;gap:10px;padding:10px 20px;
+  cursor:pointer;border-radius:0;font-size:.85rem;color:var(--muted);
+  transition:all .15s;border-left:3px solid transparent}
+.sidebar-item:hover{background:var(--surface2);color:var(--text)}
+.sidebar-item.active{background:var(--surface2);color:var(--accent);border-left-color:var(--accent)}
+.sidebar-item .icon{font-size:1rem;width:20px;text-align:center}
+.sidebar-sep{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--muted);padding:16px 20px 6px;opacity:.6}
+
+.content{overflow-y:auto;padding:28px}
+.panel{display:none}
+.panel.active{display:block}
+.panel-title{font-size:1.25rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+.panel-sub{color:var(--muted);font-size:.84rem;margin-bottom:28px}
+
+/* ── FORM ELEMENTS ───────────────────────────────────── */
+.section-card{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;margin-bottom:20px}
+.section-card-title{font-weight:700;font-size:.9rem;color:var(--accent2);
+  margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.form-grid-1{display:grid;grid-template-columns:1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:.78rem;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.field input,.field textarea,.field select{
+  background:var(--surface2);border:1px solid var(--border);border-radius:8px;
+  padding:9px 12px;color:var(--text);font-size:.9rem;font-family:inherit;outline:none;
+  transition:border-color .2s;width:100%}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:80px}
+.field input[type=color]{padding:3px 6px;height:38px;cursor:pointer}
+.field .hint{font-size:.73rem;color:var(--muted);line-height:1.5}
+.color-row{display:flex;align-items:center;gap:8px}
+.color-row input[type=color]{width:44px;height:36px;flex-shrink:0}
+.color-row input[type=text]{flex:1}
+
+/* ── INLINE EDITOR ROWS ──────────────────────────────── */
+.editor-row{display:flex;gap:10px;align-items:center;margin-bottom:8px;background:var(--surface2);
+  padding:10px 14px;border-radius:8px;border:1px solid var(--border)}
+.editor-row input,.editor-row select{background:var(--bg);border:1px solid var(--border);
+  border-radius:6px;padding:7px 10px;color:var(--text);font-size:.85rem;outline:none;font-family:inherit}
+.editor-row input:focus,.editor-row select:focus{border-color:var(--accent)}
+.editor-row .inp-flex{flex:1}
+.editor-row .inp-icon{width:60px;font-size:1.1rem;text-align:center}
+.editor-row .inp-label{min-width:140px}
+.editor-row .inp-url{flex:1}
+.editor-row .inp-color{width:110px}
+.editor-row .inp-anchor{width:130px}
+
+/* ── STATS EDITOR ────────────────────────────────────── */
+.stat-row{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.stat-row input{flex:1;background:var(--surface2);border:1px solid var(--border);
+  border-radius:6px;padding:8px 11px;color:var(--text);font-size:.85rem;outline:none}
+
+/* ── HOURS ───────────────────────────────────────────── */
+.hours-row{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.hours-row input{flex:1;background:var(--surface2);border:1px solid var(--border);
+  border-radius:6px;padding:8px 11px;color:var(--text);font-size:.85rem;outline:none}
+
+/* ── WHY US ──────────────────────────────────────────── */
+.why-card-edit{background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;padding:16px;margin-bottom:10px}
+
+/* ── PRODUCT EDITOR ──────────────────────────────────── */
+.cat-block{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);margin-bottom:24px;overflow:hidden}
+.cat-header{background:var(--surface2);padding:14px 20px;
+  display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)}
+.cat-header-inputs{display:grid;grid-template-columns:60px 60px 1fr auto;gap:10px;align-items:center;flex:1}
+.cat-header-inputs input{background:var(--bg);border:1px solid var(--border);
+  border-radius:6px;padding:7px 10px;color:var(--text);font-size:.85rem;outline:none}
+.cat-header-inputs input:focus{border-color:var(--accent)}
+
+/* Product card list inside category */
+.items-list{padding:16px 20px;display:flex;flex-direction:column;gap:14px}
+.item-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px 18px;display:flex;flex-direction:column;gap:10px}
+.item-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.item-card-title{font-weight:600;font-size:.84rem;color:var(--text)}
+.item-fields{display:grid;grid-template-columns:1fr 1fr 120px;gap:10px}
+.item-img-row{display:flex;gap:8px;align-items:center}
+.thumb{width:44px;height:36px;border-radius:5px;overflow:hidden;background:var(--bg);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--muted);flex-shrink:0}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.price-pairs{display:flex;flex-direction:column;gap:6px;margin-top:2px}
+.price-pair-row{display:flex;gap:8px;align-items:center}
+.price-pair-row input{background:var(--bg);border:1px solid var(--border);
+  border-radius:6px;padding:6px 10px;color:var(--text);font-size:.84rem;outline:none;font-family:inherit}
+.price-pair-row input:focus{border-color:var(--accent)}
+.price-pair-row .inp-unit{flex:1}
+.price-pair-row .inp-price{width:90px;font-family:'Space Mono',monospace}
+.add-item-area{padding:12px 20px;border-top:1px dashed var(--border)}
+.add-cat-btn{margin-bottom:12px}
+
+/* ── TICKER ──────────────────────────────────────────── */
+.ticker-row{display:flex;gap:10px;align-items:center;margin-bottom:8px;background:var(--surface2);
+  padding:10px 14px;border-radius:8px;border:1px solid var(--border)}
+.ticker-row input{flex:1;background:var(--bg);border:1px solid var(--border);
+  border-radius:6px;padding:7px 10px;color:var(--text);font-size:.85rem;outline:none}
+.ticker-row select{background:var(--bg);border:1px solid var(--border);
+  border-radius:6px;padding:7px 10px;color:var(--text);font-size:.82rem;outline:none;width:80px}
+
+/* ── FONT PICKER ─────────────────────────────────────── */
+.font-preview{background:var(--surface2);border:1px solid var(--border);border-radius:8px;
+  padding:16px 20px;margin-top:8px;font-size:1.4rem;color:var(--text);min-height:52px;transition:font-family .3s}
+
+/* ── TOAST ───────────────────────────────────────────── */
+.toast-wrap{position:fixed;top:70px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px}
+.toast{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:12px 18px;font-size:.83rem;box-shadow:0 8px 24px rgba(0,0,0,.4);
+  animation:toastIn .3s ease;display:flex;align-items:center;gap:8px}
+.toast.success{border-color:var(--accent);color:var(--accent)}
+.toast.error{border-color:var(--danger);color:var(--danger)}
+.toast.info{border-color:var(--info);color:var(--info)}
+@keyframes toastIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+/* ── PREVIEW BAR ─────────────────────────────────────── */
+.preview-bar{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);
+  border-radius:10px;padding:14px 18px;margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;font-size:.84rem;color:var(--accent)}
+.preview-bar a{color:var(--accent);font-weight:700;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<!-- ══ LOCK SCREEN ═════════════════════════════════════ -->
+<div id="lockScreen">
+  <div class="lock-card">
+    <div class="lock-logo">🌿 &nbsp;<span>Admin Panel</span></div>
+    <h2>Enter your password to continue</h2>
+    <input class="lock-input" id="pwInput" type="password" placeholder="Password" autocomplete="current-password"/>
+    <button class="lock-btn" onclick="tryLogin()">Sign In</button>
+    <div class="lock-err" id="lockErr"></div>
+    <div class="lock-hint">Default password: <strong>admin123</strong><br>Change it in Settings after login.</div>
+  </div>
+</div>
+
+<!-- ══ TOAST CONTAINER ═════════════════════════════════ -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- ══ APP ═════════════════════════════════════════════ -->
+<div id="app">
+  <div class="topbar">
+    <div class="topbar-brand">⚙️ &nbsp;Site <span>Admin</span></div>
+    <div class="topbar-actions">
+      <button class="btn btn-info" onclick="previewSite()">👁 Preview Site</button>
+      <button class="btn btn-primary" onclick="saveAll()">💾 Save All Changes</button>
+      <button class="btn btn-ghost" onclick="logout()">🔒 Logout</button>
+    </div>
+  </div>
+  <div class="main">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-sep">Site</div>
+      <div class="sidebar-item active" onclick="showPanel('pBasic')" data-panel="pBasic"><span class="icon">🏪</span> Shop Info</div>
+      <div class="sidebar-item" onclick="showPanel('pTheme')" data-panel="pTheme"><span class="icon">🎨</span> Colors & Theme</div>
+      <div class="sidebar-item" onclick="showPanel('pFonts')" data-panel="pFonts"><span class="icon">🔤</span> Fonts</div>
+      <div class="sidebar-item" onclick="showPanel('pLogo')" data-panel="pLogo"><span class="icon">🖼</span> Logo & Images</div>
+      <div class="sidebar-sep">Navigation</div>
+      <div class="sidebar-item" onclick="showPanel('pNavLinks')" data-panel="pNavLinks"><span class="icon">🧭</span> Nav Links</div>
+      <div class="sidebar-item" onclick="showPanel('pLinks')" data-panel="pLinks"><span class="icon">🔗</span> Quick Buttons</div>
+      <div class="sidebar-sep">Content</div>
+      <div class="sidebar-item" onclick="showPanel('pProducts')" data-panel="pProducts"><span class="icon">🛒</span> Products</div>
+      <div class="sidebar-item" onclick="showPanel('pTicker')" data-panel="pTicker"><span class="icon">📢</span> Ticker</div>
+      <div class="sidebar-item" onclick="showPanel('pStats')" data-panel="pStats"><span class="icon">📊</span> Header Stats</div>
+      <div class="sidebar-item" onclick="showPanel('pWhy')" data-panel="pWhy"><span class="icon">⭐</span> Why Us</div>
+      <div class="sidebar-item" onclick="showPanel('pHours')" data-panel="pHours"><span class="icon">🕐</span> Opening Hours</div>
+      <div class="sidebar-item" onclick="showPanel('pTexts')" data-panel="pTexts"><span class="icon">✍️</span> All Texts</div>
+      <div class="sidebar-sep">Admin</div>
+      <div class="sidebar-item" onclick="showPanel('pExport')" data-panel="pExport"><span class="icon">📁</span> Export / Import</div>
+      <div class="sidebar-item" onclick="showPanel('pSettings')" data-panel="pSettings"><span class="icon">⚙️</span> Settings</div>
+    </div>
+
+    <!-- CONTENT AREA -->
+    <div class="content">
+      <div class="preview-bar">
+        🌐 Changes are saved to your browser. Click <strong>Save All Changes</strong> then <a href="#" onclick="previewSite()">preview the site</a>. To go live, download <code>site-config.json</code> and upload it to your GitHub repo.
+      </div>
+
+      <!-- ══ SHOP INFO ════════════════════════════════ -->
+      <div class="panel active" id="pBasic">
+        <div class="panel-title">🏪 Shop Info</div>
+        <div class="panel-sub">Basic details shown across your entire website.</div>
+        <div class="section-card">
+          <div class="section-card-title">Shop Identity</div>
+          <div class="form-grid">
+            <div class="field"><label>Shop Name</label><input id="shopName" type="text" placeholder="Hari's Fresh Corner"/></div>
+            <div class="field"><label>Highlighted Word (in shop name)</label><input id="shopNameHighlight" type="text" placeholder="Fresh"/><div class="hint">This word appears in a different colour in the header.</div></div>
+            <div class="field"><label>Badge Text (header pill)</label><input id="badgeText" type="text" placeholder="Saraswotikhel"/></div>
+            <div class="field"><label>Location Label (shown in clock card)</label><input id="location" type="text" placeholder="Saraswotikhel, Bhaktapur"/></div>
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="section-card-title">Tagline</div>
+          <div class="form-grid-1">
+            <div class="field"><label>Tagline / Description</label><textarea id="tagline" rows="2"></textarea></div>
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="section-card-title">Contact & WhatsApp</div>
+          <div class="form-grid">
+            <div class="field"><label>WhatsApp Number (digits only)</label><input id="whatsappNumber" type="text" placeholder="9779800000000"/><div class="hint">Include country code, no + or spaces.</div></div>
+            <div class="field"><label>WhatsApp Pre-filled Message</label><input id="whatsappMessage" type="text" placeholder="Hello! I'd like to order 🛒"/></div>
+            <div class="field"><label>Phone Display (footer)</label><input id="phone" type="text" placeholder="+977 98-XXXXXXXX"/></div>
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="section-card-title">Address (Footer)</div>
+          <div class="form-grid-1">
+            <div class="field"><label>Address (use new lines)</label><textarea id="address" rows="4"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ COLORS ═══════════════════════════════════ -->
+      <div class="panel" id="pTheme">
+        <div class="panel-title">🎨 Colors & Theme</div>
+        <div class="panel-sub">Every colour on the website.</div>
+        <div class="section-card">
+          <div class="section-card-title">Main Background & Text</div>
+          <div class="form-grid">
+            <div class="field"><label>Page Background (Cream)</label><div class="color-row"><input type="color" id="colorCream"/><input type="text" id="colorCreamHex"/></div></div>
+            <div class="field"><label>Main Text (Bark)</label><div class="color-row"><input type="color" id="colorBark"/><input type="text" id="colorBarkHex"/></div></div>
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="section-card-title">Brand Colours</div>
+          <div class="form-grid">
+            <div class="field"><label>Primary (Leaf / Green)</label><div class="color-row"><input type="color" id="colorLeaf"/><input type="text" id="colorLeafHex"/></div></div>
+            <div class="field"><label>Accent (Saffron)</label><div class="color-row"><input type="color" id="colorSaffron"/><input type="text" id="colorSaffronHex"/></div></div>
+            <div class="field"><label>Highlight (Mango)</label><div class="color-row"><input type="color" id="colorMango"/><input type="text" id="colorMangoHex"/></div></div>
+            <div class="field"><label>Hot Badge (Tomato)</label><div class="color-row"><input type="color" id="colorTomato"/><input type="text" id="colorTomatoHex"/></div></div>
+            <div class="field"><label>Sky Blue</label><div class="color-row"><input type="color" id="colorSky"/><input type="text" id="colorSkyHex"/></div></div>
+            <div class="field"><label>WhatsApp Button</label><div class="color-row"><input type="color" id="colorWhatsapp"/><input type="text" id="colorWhatsappHex"/></div></div>
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="section-card-title">Section Backgrounds</div>
+          <div class="form-grid">
+            <div class="field"><label>Main Page BG</label><div class="color-row"><input type="color" id="bgMain"/><input type="text" id="bgMainHex"/></div></div>
+            <div class="field"><label>Why Us Section BG</label><div class="color-row"><input type="color" id="bgWhy"/><input type="text" id="bgWhyHex"/></div></div>
+            <div class="field"><label>Footer BG</label><div class="color-row"><input type="color" id="bgFooter"/><input type="text" id="bgFooterHex"/></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ FONTS ════════════════════════════════════ -->
+      <div class="panel" id="pFonts">
+        <div class="panel-title">🔤 Fonts</div>
+        <div class="panel-sub">Pick fonts for headings, body text, and numbers.</div>
+        <div class="section-card">
+          <div class="section-card-title">English Font Presets</div>
+          <div class="form-grid">
+            <div class="field">
+              <label>Heading Font</label>
+              <select id="headingFont" onchange="updateFontPreview()">
+                <option value="Playfair Display" data-url="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap">Playfair Display (Classic Serif)</option>
+                <option value="Lora" data-url="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap">Lora (Warm Serif)</option>
+                <option value="Merriweather" data-url="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&display=swap">Merriweather (News Serif)</option>
+                <option value="Josefin Sans" data-url="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&display=swap">Josefin Sans (Modern)</option>
+                <option value="Oswald" data-url="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap">Oswald (Bold Sans)</option>
+                <option value="Raleway" data-url="https://fonts.googleapis.com/css2?family=Raleway:wght@700;900&display=swap">Raleway (Elegant)</option>
+                <option value="Bebas Neue" data-url="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">Bebas Neue (Display)</option>
+              </select>
+              <div class="font-preview" id="headingPreview">Hari's Fresh Corner</div>
+            </div>
+            <div class="field">
+              <label>Body Font</label>
+              <select id="bodyFont" onchange="updateFontPreview()">
+                <option value="DM Sans" data-url="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap">DM Sans (Clean Modern)</option>
+                <option value="Nunito" data-url="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap">Nunito (Friendly Rounded)</option>
+                <option value="Poppins" data-url="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">Poppins (Geometric)</option>
+                <option value="Karla" data-url="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600&display=swap">Karla (Subtle)</option>
+                <option value="Rubik" data-url="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap">Rubik (Soft Geometric)</option>
+              </select>
+              <div class="font-preview" id="bodyPreview" style="font-size:.95rem;line-height:1.6">Fresh vegetables and daily essentials delivered to your door.</div>
+            </div>
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="section-card-title">🇳🇵 Devanagari / Nepali Font</div>
+          <div class="form-grid">
+            <div class="field">
+              <label>Enable Devanagari Font</label>
+              <select id="useDevanagari" onchange="updateFontPreview()">
+                <option value="false">No — use English fonts only</option>
+                <option value="true">Yes — add Devanagari support</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Devanagari Font</label>
+              <select id="devanagariFont" onchange="updateFontPreview()">
+                <option value="Mukta" data-url="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&display=swap">Mukta (Most popular, clean)</option>
+                <option value="Tiro Devanagari Hindi" data-url="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap">Tiro Devanagari Hindi (Elegant)</option>
+                <option value="Noto Sans Devanagari" data-url="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;600;700&display=swap">Noto Sans Devanagari (Universal)</option>
+                <option value="Hind" data-url="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;600;700&display=swap">Hind (UI-friendly)</option>
+                <option value="Baloo 2" data-url="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap">Baloo 2 (Friendly rounded)</option>
+              </select>
+              <div class="font-preview" id="devPreview" style="font-size:1.3rem">ताजा तरकारी र दैनिक उपभोग्य वस्तुहरू</div>
+            </div>
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="section-card-title">Font Sizes</div>
+          <div class="form-grid-3">
+            <div class="field"><label>Body Text Size</label><input type="text" id="bodySize" placeholder="0.9rem"/><div class="hint">e.g. 0.9rem or 15px</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ LOGO ═════════════════════════════════════ -->
+      <div class="panel" id="pLogo">
+        <div class="panel-title">🖼 Logo & Favicon</div>
+        <div class="panel-sub">Upload images to Imgur, Cloudinary, or GitHub, then paste the URL here.</div>
+        <div class="section-card">
+          <div class="section-card-title">Logo</div>
+          <div class="form-grid">
+            <div class="field">
+              <label>Logo Image URL</label>
+              <input type="text" id="logoUrl" placeholder="https://example.com/logo.png"/>
+              <div class="hint">Leave empty to show the text shop name. Recommended: PNG transparent background.</div>
+            </div>
+            <div class="field">
+              <label>Logo Preview</label>
+              <div id="logoPreviewBox" style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:20px;min-height:80px;display:flex;align-items:center;justify-content:center;gap:16px">
+                <span style="color:var(--muted);font-size:.8rem">Enter URL above to preview</span>
+              </div>
+              <button class="btn btn-ghost" style="margin-top:8px;width:100%" onclick="previewLogo()">🔍 Preview Logo</button>
+            </div>
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="section-card-title">Favicon</div>
+          <div class="form-grid">
+            <div class="field">
+              <label>Favicon URL</label>
+              <input type="text" id="faviconUrl" placeholder="https://example.com/favicon.ico"/>
+              <div class="hint">Small icon in browser tabs. Use .ico or .png (32×32).</div>
+            </div>
+          </div>
+        </div>
+        <div class="section-card" style="background:rgba(96,165,250,.06);border-color:rgba(96,165,250,.2)">
+          <div class="section-card-title" style="color:var(--info)">💡 Free Image Hosting Tips</div>
+          <ul style="color:var(--muted);font-size:.82rem;line-height:2.1;padding-left:16px">
+            <li><strong style="color:var(--text)">GitHub (recommended)</strong> — upload to repo → right-click → Copy image address</li>
+            <li><strong style="color:var(--text)">Imgur.com</strong> — free, no account needed</li>
+            <li><strong style="color:var(--text)">Cloudinary.com</strong> — free tier, great for product photos</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ══ NAV LINKS ════════════════════════════════ -->
+      <div class="panel" id="pNavLinks">
+        <div class="panel-title">🧭 Desktop Navigation Links</div>
+        <div class="panel-sub">These links appear in the top navigation bar on desktop. You can add, remove, and reorder them. Use anchor links (e.g. <code>#fresh</code>) to scroll to sections, or full URLs for external pages.</div>
+        <div class="section-card">
+          <div class="section-card-title">Nav Link Items</div>
+          <p style="color:var(--muted);font-size:.8rem;margin-bottom:14px">Each row is one link in the navigation. Label is the displayed text; Anchor/URL is where it goes.</p>
+          <div id="navLinksEditor"></div>
+          <button class="btn btn-primary" style="margin-top:12px" onclick="addNavLink()">+ Add Nav Link</button>
+        </div>
+      </div>
+
+      <!-- ══ QUICK BUTTONS ════════════════════════════ -->
+      <div class="panel" id="pLinks">
+        <div class="panel-title">🔗 Quick Action Buttons</div>
+        <div class="panel-sub">Buttons shown below the header. On mobile, they automatically fit 3 per row. Add custom buttons with any icon, color, and link.</div>
+        <div class="section-card">
+          <div class="section-card-title">Button Items</div>
+          <p style="color:var(--muted);font-size:.8rem;margin-bottom:14px">
+            Color options: <code>lbtn-map</code> (blue) · <code>lbtn-wa</code> (green) · <code>lbtn-call</code> (red) · <code>lbtn-green</code> · <code>lbtn-orange</code> · <code>lbtn-blue</code> · <code>lbtn-dark</code> · <code>lbtn-mango</code><br>
+            Type <code>wa</code> auto-uses your WhatsApp number and message.
+          </p>
+          <div id="linksEditor"></div>
+          <button class="btn btn-primary" style="margin-top:12px" onclick="addLinkButton()">+ Add Button</button>
+        </div>
+      </div>
+
+      <!-- ══ PRODUCTS ══════════════════════════════════ -->
+      <div class="panel" id="pProducts">
+        <div class="panel-title">🛒 Products & Categories</div>
+        <div class="panel-sub">Each product can have multiple unit/price pairs (e.g. "1 kg → Rs. 30" and "1 dharni → Rs. 60"). Click "+ Add Price" to add more rows.</div>
+        <button class="btn btn-primary add-cat-btn" onclick="addCategory()">+ Add New Category</button>
+        <div id="categoriesEditor"></div>
+      </div>
+
+      <!-- ══ TICKER ════════════════════════════════════ -->
+      <div class="panel" id="pTicker">
+        <div class="panel-title">📢 Ticker / Announcements</div>
+        <div class="panel-sub">The scrolling banner. Add, edit or remove notices.</div>
+        <div class="section-card">
+          <div class="section-card-title">Ticker Items</div>
+          <div id="tickerEditor"></div>
+          <button class="btn btn-primary" style="margin-top:12px" onclick="addTickerItem()">+ Add Item</button>
+        </div>
+      </div>
+
+      <!-- ══ STATS ═════════════════════════════════════ -->
+      <div class="panel" id="pStats">
+        <div class="panel-title">📊 Header Stats</div>
+        <div class="panel-sub">The numbers shown in the header (e.g. "8 AM Opens Daily"). These are dynamic — edit freely.</div>
+        <div class="section-card">
+          <div class="section-card-title">Stat Items</div>
+          <div id="statsEditor"></div>
+          <button class="btn btn-primary" style="margin-top:12px" onclick="addStatItem()">+ Add Stat</button>
+        </div>
+      </div>
+
+      <!-- ══ WHY US ════════════════════════════════════ -->
+      <div class="panel" id="pWhy">
+        <div class="panel-title">⭐ Why Us Section</div>
+        <div class="panel-sub">The dark section highlighting your shop's promises.</div>
+        <div class="section-card">
+          <div id="whyEditor"></div>
+          <button class="btn btn-primary" style="margin-top:12px" onclick="addWhyItem()">+ Add Card</button>
+        </div>
+      </div>
+
+      <!-- ══ HOURS ═════════════════════════════════════ -->
+      <div class="panel" id="pHours">
+        <div class="panel-title">🕐 Opening Hours</div>
+        <div class="panel-sub">Footer hours grid. Toggle "closed" to show in red.</div>
+        <div class="section-card">
+          <div id="hoursEditor"></div>
+          <button class="btn btn-primary" style="margin-top:12px" onclick="addHoursRow()">+ Add Row</button>
+        </div>
+      </div>
+
+      <!-- ══ ALL TEXTS ══════════════════════════════════ -->
+      <div class="panel" id="pTexts">
+        <div class="panel-title">✍️ All Text Sections</div>
+        <div class="panel-sub">Edit every label, heading, subheading and note that appears on the site.</div>
+        <div class="section-card" id="textsEditor"></div>
+      </div>
+
+      <!-- ══ EXPORT ════════════════════════════════════ -->
+      <div class="panel" id="pExport">
+        <div class="panel-title">📁 Export / Import Config</div>
+        <div class="panel-sub">Download your site config as JSON to upload to GitHub, or import a backup.</div>
+        <div class="section-card">
+          <div class="section-card-title">Export</div>
+          <p style="color:var(--muted);font-size:.84rem;margin-bottom:14px;line-height:1.6">Click below to download your current <code>site-config.json</code>. Replace the file in your GitHub repository with this download to update the live site.</p>
+          <button class="btn btn-primary" onclick="exportConfig()">⬇ Download site-config.json</button>
+        </div>
+        <div class="section-card" style="margin-top:16px">
+          <div class="section-card-title">Import</div>
+          <p style="color:var(--muted);font-size:.84rem;margin-bottom:14px;line-height:1.6">Upload a previously exported config file to restore a backup.</p>
+          <input type="file" id="importFile" accept=".json" style="display:none" onchange="importConfig(event)"/>
+          <button class="btn btn-warn" onclick="document.getElementById('importFile').click()">⬆ Import site-config.json</button>
+        </div>
+        <div class="section-card" style="margin-top:16px;background:rgba(74,222,128,.06);border-color:rgba(74,222,128,.2)">
+          <div class="section-card-title" style="color:var(--accent)">🚀 How to Deploy to GitHub Pages</div>
+          <ol style="color:var(--muted);font-size:.82rem;line-height:2.2;padding-left:20px">
+            <li>Make your changes in admin, click <strong style="color:var(--text)">Save All Changes</strong></li>
+            <li>Click <strong style="color:var(--text)">Download site-config.json</strong> above</li>
+            <li>Go to your GitHub repo → upload/replace <code>site-config.json</code></li>
+            <li>Your site updates automatically within 1–2 minutes</li>
+            <li><strong style="color:var(--text)">Important:</strong> Keep <code>admin.html</code> out of your public repo</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ══ SETTINGS ═══════════════════════════════════ -->
+      <div class="panel" id="pSettings">
+        <div class="panel-title">⚙️ Admin Settings</div>
+        <div class="panel-sub">Manage your admin panel preferences.</div>
+        <div class="section-card">
+          <div class="section-card-title">Change Admin Password</div>
+          <div class="form-grid">
+            <div class="field"><label>New Password</label><input type="password" id="newPw" placeholder="Enter new password"/></div>
+            <div class="field"><label>Confirm Password</label><input type="password" id="confirmPw" placeholder="Confirm new password"/></div>
+          </div>
+          <button class="btn btn-warn" style="margin-top:14px" onclick="changePassword()">🔒 Change Password</button>
+        </div>
+        <div class="section-card" style="margin-top:16px">
+          <div class="section-card-title">Reset All Content</div>
+          <p style="color:var(--muted);font-size:.84rem;margin-bottom:14px">This will load the original config from site-config.json and discard any unsaved browser changes.</p>
+          <button class="btn btn-danger" onclick="resetToFile()">⚠️ Reset to File Config</button>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   AUTH
+══════════════════════════════════════════════════════════ */
+const DEFAULT_PW='admin123';
+function getPw(){return localStorage.getItem('adminPw')||DEFAULT_PW}
+function tryLogin(){
+  const v=document.getElementById('pwInput').value;
+  if(v===getPw()){
+    localStorage.setItem('adminLoggedIn','1');
+    document.getElementById('lockScreen').style.display='none';
+    document.getElementById('app').style.display='block';
+    loadConfig();
+  } else {
+    document.getElementById('lockErr').textContent='Incorrect password.';
+    setTimeout(()=>document.getElementById('lockErr').textContent='',2000);
+  }
+}
+document.getElementById('pwInput').addEventListener('keydown',e=>{if(e.key==='Enter')tryLogin()});
+function logout(){localStorage.removeItem('adminLoggedIn');location.reload()}
+if(localStorage.getItem('adminLoggedIn')==='1'){
+  document.getElementById('lockScreen').style.display='none';
+  document.getElementById('app').style.display='block';
+}
+function changePassword(){
+  const np=document.getElementById('newPw').value,cp=document.getElementById('confirmPw').value;
+  if(!np){toast('Enter a new password','error');return}
+  if(np!==cp){toast('Passwords do not match','error');return}
+  localStorage.setItem('adminPw',np);
+  document.getElementById('newPw').value='';document.getElementById('confirmPw').value='';
+  toast('Password changed successfully','success');
+}
+
+/* ══════════════════════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════════════════════ */
+function toast(msg,type='success'){
+  const tw=document.getElementById('toastWrap');
+  const t=document.createElement('div');t.className=`toast ${type}`;
+  t.textContent=(type==='success'?'✅ ':type==='error'?'❌ ':'ℹ️ ')+msg;
+  tw.appendChild(t);setTimeout(()=>t.remove(),3200);
+}
+
+/* ══════════════════════════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════════════════════════ */
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelector(`[data-panel="${id}"]`).classList.add('active');
+}
+
+/* ══════════════════════════════════════════════════════════
+   CONFIG STATE
+══════════════════════════════════════════════════════════ */
+let CFG=null;
+const DEFAULT_NAV_LINKS=[
+  {label:'Fresh List',anchor:'#fresh'},
+  {label:'Why Us',anchor:'#why'},
+  {label:'Find Us',anchor:'#findUs'},
+  {label:'Hours',anchor:'#footer-sec'}
+];
+
+async function loadConfig(){
+  try{
+    const stored=localStorage.getItem('siteConfig');
+    if(stored){CFG=JSON.parse(stored);toast('Loaded saved config from browser','info');}
+    else{
+      const r=await fetch('site-config.json?v='+Date.now());
+      CFG=await r.json();
+      toast('Loaded config from site-config.json','info');
+    }
+  }catch(e){
+    toast('Could not load config. Make sure site-config.json exists next to admin.html.','error');
+    return;
+  }
+  // Ensure all new fields exist
+  if(!CFG.navLinks)CFG.navLinks=DEFAULT_NAV_LINKS;
+  if(!CFG.links)CFG.links=[];
+  populateAll();
+}
+
+async function resetToFile(){
+  if(!confirm('Reset all browser changes and reload from site-config.json?'))return;
+  localStorage.removeItem('siteConfig');
+  const r=await fetch('site-config.json?v='+Date.now());
+  CFG=await r.json();
+  if(!CFG.navLinks)CFG.navLinks=DEFAULT_NAV_LINKS;
+  populateAll();
+  toast('Reset to file config','info');
+}
+
+/* ══════════════════════════════════════════════════════════
+   SAVE
+══════════════════════════════════════════════════════════ */
+function saveAll(){
+  collectAll();
+  localStorage.setItem('siteConfig',JSON.stringify(CFG,null,2));
+  toast('All changes saved! Download config to deploy to GitHub.','success');
+}
+
+function previewSite(){
+  saveAll();
+  window.open('index.html','_blank');
+}
+
+/* ══════════════════════════════════════════════════════════
+   EXPORT / IMPORT
+══════════════════════════════════════════════════════════ */
+function exportConfig(){
+  collectAll();
+  const blob=new Blob([JSON.stringify(CFG,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='site-config.json';a.click();
+  toast('Downloaded site-config.json','success');
+}
+function importConfig(e){
+  const f=e.target.files[0];if(!f)return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    try{CFG=JSON.parse(ev.target.result);if(!CFG.navLinks)CFG.navLinks=DEFAULT_NAV_LINKS;populateAll();toast('Config imported — review and Save All','success');}
+    catch{toast('Invalid JSON file','error');}
+  };
+  reader.readAsText(f);
+}
+
+/* ══════════════════════════════════════════════════════════
+   POPULATE FORMS FROM CONFIG
+══════════════════════════════════════════════════════════ */
+function populateAll(){
+  const m=CFG.meta,t=CFG.theme,f=CFG.fonts;
+  sv('shopName',m.shopName);sv('shopNameHighlight',m.shopNameHighlight);
+  sv('badgeText',m.badgeText);sv('location',m.location);sv('tagline',m.tagline);
+  sv('whatsappNumber',m.whatsappNumber);sv('whatsappMessage',m.whatsappMessage);
+  sv('phone',m.phone);sv('address',m.address);sv('logoUrl',m.logoUrl);sv('faviconUrl',m.faviconUrl);
+
+  // theme colors
+  const colors=['colorCream','colorBark','colorLeaf','colorSaffron','colorMango','colorTomato',
+    'colorSky','colorLavender','colorChili','colorWhatsapp','bgMain','bgWhy','bgFooter'];
+  colors.forEach(k=>{
+    const el=document.getElementById(k);
+    const hex=document.getElementById(k+'Hex');
+    if(el&&t[k]){el.value=t[k];if(hex)hex.value=t[k];}
+    if(el)el.addEventListener('input',()=>{if(hex)hex.value=el.value});
+    if(hex)hex.addEventListener('input',()=>{if(hex.value.match(/^#[0-9a-f]{6}$/i))el.value=hex.value});
+  });
+
+  // fonts
+  sv('bodySize',f.bodySize);
+  sv('useDevanagari',String(f.useDevanagari));
+  // select matching option by value
+  ['headingFont','bodyFont','devanagariFont'].forEach(id=>{
+    const sel=document.getElementById(id);if(!sel)return;
+    const val=f[id];if(!val)return;
+    for(const opt of sel.options){if(opt.value===val){opt.selected=true;break;}}
+  });
+  updateFontPreview();
+
+  // dynamic editors
+  buildNavLinksEditor();
+  buildLinksEditor();
+  buildProductsEditor();
+  buildTickerEditor();
+  buildStatsEditor();
+  buildWhyEditor();
+  buildHoursEditor();
+  buildTextsEditor();
+}
+
+function sv(id,val){const el=document.getElementById(id);if(el&&val!==undefined)el.value=val}
+function gv(id){const el=document.getElementById(id);return el?el.value:''}
+
+/* ══════════════════════════════════════════════════════════
+   COLLECT FROM FORMS INTO CONFIG
+══════════════════════════════════════════════════════════ */
+function collectAll(){
+  CFG.meta.shopName=gv('shopName');CFG.meta.shopNameHighlight=gv('shopNameHighlight');
+  CFG.meta.badgeText=gv('badgeText');CFG.meta.location=gv('location');CFG.meta.tagline=gv('tagline');
+  CFG.meta.whatsappNumber=gv('whatsappNumber');CFG.meta.whatsappMessage=gv('whatsappMessage');
+  CFG.meta.phone=gv('phone');CFG.meta.address=gv('address');
+  CFG.meta.logoUrl=gv('logoUrl');CFG.meta.faviconUrl=gv('faviconUrl');
+
+  const colors=['colorCream','colorBark','colorLeaf','colorSaffron','colorMango','colorTomato',
+    'colorSky','colorLavender','colorChili','colorWhatsapp','bgMain','bgWhy','bgFooter'];
+  colors.forEach(k=>{const hex=document.getElementById(k+'Hex');if(hex&&hex.value)CFG.theme[k]=hex.value;});
+
+  CFG.fonts.headingFont=gv('headingFont');
+  const hSel=document.getElementById('headingFont');
+  CFG.fonts.headingFontUrl=hSel?.selectedOptions[0]?.dataset.url||CFG.fonts.headingFontUrl||'';
+  CFG.fonts.bodyFont=gv('bodyFont');
+  const bSel=document.getElementById('bodyFont');
+  CFG.fonts.bodyFontUrl=bSel?.selectedOptions[0]?.dataset.url||CFG.fonts.bodyFontUrl||'';
+  CFG.fonts.useDevanagari=gv('useDevanagari')==='true';
+  CFG.fonts.devanagariFont=gv('devanagariFont');
+  const dSel=document.getElementById('devanagariFont');
+  CFG.fonts.devanagariUrl=dSel?.selectedOptions[0]?.dataset.url||CFG.fonts.devanagariUrl||'';
+  CFG.fonts.bodySize=gv('bodySize');
+
+  collectNavLinks();
+  collectLinks();
+  collectProducts();
+  collectTicker();
+  collectStats();
+  collectWhy();
+  collectHours();
+  collectTexts();
+}
+
+/* ══════════════════════════════════════════════════════════
+   FONT PREVIEW
+══════════════════════════════════════════════════════════ */
+function updateFontPreview(){
+  const hf=gv('headingFont'),bf=gv('bodyFont'),df=gv('devanagariFont');
+  const hSel=document.getElementById('headingFont');
+  const bSel=document.getElementById('bodyFont');
+  const dSel=document.getElementById('devanagariFont');
+  [hSel?.selectedOptions[0]?.dataset.url,bSel?.selectedOptions[0]?.dataset.url,dSel?.selectedOptions[0]?.dataset.url].forEach(u=>{
+    if(u&&!document.querySelector(`link[href="${u}"]`)){const l=document.createElement('link');l.rel='stylesheet';l.href=u;document.head.appendChild(l);}
+  });
+  const hp=document.getElementById('headingPreview');if(hp)hp.style.fontFamily=`'${hf}',serif`;
+  const bp=document.getElementById('bodyPreview');if(bp)bp.style.fontFamily=`'${bf}',sans-serif`;
+  const dp=document.getElementById('devPreview');if(dp)dp.style.fontFamily=`'${df}',sans-serif`;
+}
+
+/* ══════════════════════════════════════════════════════════
+   LOGO PREVIEW
+══════════════════════════════════════════════════════════ */
+function previewLogo(){
+  const url=gv('logoUrl'),box=document.getElementById('logoPreviewBox');
+  if(!url){box.innerHTML='<span style="color:var(--muted);font-size:.8rem">No URL entered</span>';return;}
+  box.innerHTML=`<img src="${url}" alt="Logo" style="max-height:80px;max-width:100%;object-fit:contain" onerror="this.parentNode.innerHTML='<span style=color:var(--danger)>Could not load image — check URL</span>'"/>`;
+}
+
+/* ══════════════════════════════════════════════════════════
+   NAV LINKS EDITOR
+══════════════════════════════════════════════════════════ */
+function buildNavLinksEditor(){
+  const root=document.getElementById('navLinksEditor');root.innerHTML='';
+  (CFG.navLinks||DEFAULT_NAV_LINKS).forEach((link,i)=>{
+    const row=document.createElement('div');row.className='editor-row';
+    row.innerHTML=`<span style="color:var(--muted);font-size:.8rem;min-width:24px;text-align:center">${i+1}</span>
+      <input class="inp-label nav-label" value="${esc(link.label)}" placeholder="Label (e.g. Fresh List)" style="flex:1"/>
+      <input class="inp-anchor nav-anchor" value="${esc(link.anchor||link.url||'')}" placeholder="#fresh or https://…" style="flex:1"/>
+      <button class="btn btn-ghost btn-sm" onclick="moveNavLink(${i},-1)" title="Move Up">↑</button>
+      <button class="btn btn-ghost btn-sm" onclick="moveNavLink(${i},1)" title="Move Down">↓</button>
+      <button class="btn btn-danger btn-sm" onclick="removeNavLink(${i})">✕</button>`;
+    root.appendChild(row);
+  });
+}
+function addNavLink(){
+  if(!CFG.navLinks)CFG.navLinks=[...DEFAULT_NAV_LINKS];
+  CFG.navLinks.push({label:'New Link',anchor:'#fresh'});
+  buildNavLinksEditor();
+}
+function removeNavLink(i){CFG.navLinks.splice(i,1);buildNavLinksEditor();}
+function moveNavLink(i,dir){
+  const ni=i+dir;if(ni<0||ni>=CFG.navLinks.length)return;
+  [CFG.navLinks[i],CFG.navLinks[ni]]=[CFG.navLinks[ni],CFG.navLinks[i]];
+  buildNavLinksEditor();
+}
+function collectNavLinks(){
+  CFG.navLinks=[];
+  document.querySelectorAll('#navLinksEditor .editor-row').forEach(row=>{
+    const label=row.querySelector('.nav-label')?.value||'';
+    const anchor=row.querySelector('.nav-anchor')?.value||'';
+    if(label)CFG.navLinks.push({label,anchor});
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   QUICK LINKS / BUTTONS EDITOR
+══════════════════════════════════════════════════════════ */
+const LINK_COLORS=['lbtn-map','lbtn-wa','lbtn-call','lbtn-green','lbtn-orange','lbtn-blue','lbtn-dark','lbtn-mango','lbtn-red'];
+const LINK_TYPES=['map','wa','call','custom'];
+
+function buildLinksEditor(){
+  const root=document.getElementById('linksEditor');root.innerHTML='';
+  (CFG.links||[]).forEach((b,i)=>{
+    const colorOpts=LINK_COLORS.map(c=>`<option value="${c}"${b.color===c?' selected':''}>${c.replace('lbtn-','')}</option>`).join('');
+    const typeOpts=LINK_TYPES.map(t=>`<option value="${t}"${(b.type||'custom')===t?' selected':''}>${t}</option>`).join('');
+    const row=document.createElement('div');row.className='editor-row';
+    row.style.flexWrap='wrap';row.style.gap='8px';
+    row.innerHTML=`<input class="inp-icon lnk-icon" value="${esc(b.icon||'🔗')}" placeholder="Icon" style="width:52px;font-size:1.2rem;text-align:center"/>
+      <input class="inp-label lnk-label" value="${esc(b.label||'')}" placeholder="Button Label" style="min-width:130px;flex:1"/>
+      <input class="lnk-sub" value="${esc(b.sublabel||'')}" placeholder="Sub-label (optional)" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:.84rem;outline:none;width:140px"/>
+      <input class="lnk-url" value="${esc(b.url||'')}" placeholder="URL or tel:…" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:.84rem;outline:none;flex:1;min-width:160px"/>
+      <select class="lnk-type" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:.82rem;outline:none">${typeOpts}</select>
+      <select class="lnk-color" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:.82rem;outline:none">${colorOpts}</select>
+      <button class="btn btn-danger btn-sm" onclick="removeLinkButton(${i})">✕</button>`;
+    root.appendChild(row);
+  });
+}
+function addLinkButton(){
+  if(!CFG.links)CFG.links=[];
+  CFG.links.push({label:'New Button',icon:'🔗',sublabel:'',url:'',color:'lbtn-green',type:'custom'});
+  buildLinksEditor();
+}
+function removeLinkButton(i){CFG.links.splice(i,1);buildLinksEditor();}
+function collectLinks(){
+  CFG.links=[];
+  document.querySelectorAll('#linksEditor .editor-row').forEach(row=>{
+    CFG.links.push({
+      icon:row.querySelector('.lnk-icon')?.value||'🔗',
+      label:row.querySelector('.lnk-label')?.value||'',
+      sublabel:row.querySelector('.lnk-sub')?.value||'',
+      url:row.querySelector('.lnk-url')?.value||'',
+      type:row.querySelector('.lnk-type')?.value||'custom',
+      color:row.querySelector('.lnk-color')?.value||'lbtn-green'
+    });
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   PRODUCTS EDITOR — MULTI-UNIT PRICE SUPPORT
+══════════════════════════════════════════════════════════ */
+function buildProductsEditor(){
+  const root=document.getElementById('categoriesEditor');root.innerHTML='';
+  (CFG.categories||[]).forEach((cat,ci)=>{
+    const block=document.createElement('div');block.className='cat-block';block.dataset.ci=ci;
+    block.innerHTML=`
+      <div class="cat-header">
+        <span style="color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em">Category</span>
+        <div class="cat-header-inputs">
+          <input title="Icon (emoji)" value="${esc(cat.icon)}" class="cat-icon-inp" placeholder="🥬"/>
+          <input title="Icon Background Color" type="color" value="${cat.iconBg||'#2e7d45'}" class="cat-iconbg-inp" style="padding:2px;height:36px"/>
+          <input title="Category Name" value="${esc(cat.name)}" class="cat-name-inp" placeholder="Category Name" style="font-weight:700"/>
+          <div style="display:flex;gap:6px">
+            <button class="btn btn-ghost" onclick="moveCat(${ci},-1)" title="Move Up">↑</button>
+            <button class="btn btn-ghost" onclick="moveCat(${ci},1)" title="Move Down">↓</button>
+            <button class="btn btn-danger" onclick="deleteCategory(${ci})" style="padding:6px 10px;font-size:.76rem">✕ Category</button>
+          </div>
+        </div>
+      </div>
+      <div class="items-list" id="items-list-${ci}"></div>
+      <div class="add-item-area">
+        <button class="btn btn-primary" onclick="addItem(${ci})">+ Add Product</button>
+      </div>`;
+    root.appendChild(block);
+    (cat.items||[]).forEach((item,ii)=>renderItemCard(ci,ii,item));
+  });
+}
+
+function renderItemCard(ci,ii,item){
+  const listEl=document.getElementById(`items-list-${ci}`);
+  const prices=item.prices&&item.prices.length?item.prices:[{unit:item.unit||'',price:item.price||''}];
+  const badgeOpts=['','hot','sale'].map(b=>`<option value="${b}"${item.badge===b?' selected':''}>${b||'None'}</option>`).join('');
+  const priceRowsHtml=prices.map((p,pi)=>pricePairRow(p.unit||'',p.price||'',ci,ii,pi)).join('');
+
+  const card=document.createElement('div');card.className='item-card';card.id=`item-${ci}-${ii}`;
+  card.innerHTML=`
+    <div class="item-card-head">
+      <span class="item-card-title">${CFG.categories[ci]?.icon||'📦'} ${esc(item.name)||'Item '+(ii+1)}</span>
+      <div style="display:flex;gap:6px">
+        <button class="btn btn-ghost btn-sm" onclick="moveItem(${ci},${ii},-1)">↑</button>
+        <button class="btn btn-ghost btn-sm" onclick="moveItem(${ci},${ii},1)">↓</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteItem(${ci},${ii})">✕</button>
+      </div>
+    </div>
+    <div class="item-img-row">
+      <div class="thumb" id="thumb-${ci}-${ii}">${item.imageUrl?`<img src="${esc(item.imageUrl)}" onerror="this.style.display='none'"/>`:CFG.categories[ci]?.icon||'📦'}</div>
+      <input style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:.84rem;outline:none;font-family:inherit" class="iimg" placeholder="Image URL (optional)" value="${esc(item.imageUrl||'')}" oninput="updateThumb(${ci},${ii},this.value)"/>
+    </div>
+    <div class="item-fields">
+      <div class="field"><label>Product Name</label><input class="iname" value="${esc(item.name)}" placeholder="Product name"/></div>
+      <div class="field"><label>Badge</label><select class="ibadge" style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:9px 12px;color:var(--text);font-size:.9rem;outline:none;font-family:inherit">${badgeOpts}</select></div>
+      <div></div>
+    </div>
+    <div>
+      <div style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Unit / Price Pairs</div>
+      <div class="price-pairs" id="price-pairs-${ci}-${ii}">${priceRowsHtml}</div>
+      <button class="btn btn-ghost btn-sm" style="margin-top:6px" onclick="addPricePair(${ci},${ii})">+ Add Unit / Price</button>
+    </div>`;
+  listEl.appendChild(card);
+}
+
+function pricePairRow(unit,price,ci,ii,pi){
+  return `<div class="price-pair-row" data-pi="${pi}">
+    <input class="inp-unit" value="${esc(unit)}" placeholder="Unit (e.g. 1 kg)" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-size:.84rem;outline:none;font-family:inherit;flex:1"/>
+    <input class="inp-price" type="number" value="${price}" placeholder="Price" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-size:.84rem;outline:none;font-family:'Space Mono',monospace;width:90px"/>
+    <button class="btn btn-danger btn-sm" onclick="removePricePair(this)" title="Remove price row">✕</button>
+  </div>`;
+}
+
+function addPricePair(ci,ii){
+  const pairs=document.getElementById(`price-pairs-${ci}-${ii}`);
+  const pi=pairs.querySelectorAll('.price-pair-row').length;
+  const div=document.createElement('div');div.innerHTML=pricePairRow('','',ci,ii,pi);
+  pairs.appendChild(div.firstChild);
+}
+function removePricePair(btn){
+  const row=btn.closest('.price-pair-row');
+  if(row.closest('.price-pairs').querySelectorAll('.price-pair-row').length<=1){toast('Each product must have at least one price row.','error');return;}
+  row.remove();
+}
+
+function updateThumb(ci,ii,url){
+  const t=document.getElementById(`thumb-${ci}-${ii}`);if(!t)return;
+  t.innerHTML=url?`<img src="${url}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentNode.textContent='${CFG.categories[ci]?.icon||'📦'}'"/>`:CFG.categories[ci]?.icon||'📦';
+}
+
+function addItem(ci){
+  if(!CFG.categories[ci].items)CFG.categories[ci].items=[];
+  const ii=CFG.categories[ci].items.length;
+  const item={id:'item'+Date.now(),name:'New Item',imageUrl:'',badge:'',prices:[{unit:'1 kg',price:'0'}]};
+  CFG.categories[ci].items.push(item);
+  renderItemCard(ci,ii,item);
+}
+
+function deleteItem(ci,ii){
+  if(!confirm('Delete this product?'))return;
+  CFG.categories[ci].items.splice(ii,1);buildProductsEditor();
+}
+
+function moveItem(ci,ii,dir){
+  const ni=ii+dir;const items=CFG.categories[ci].items;
+  if(ni<0||ni>=items.length)return;
+  [items[ii],items[ni]]=[items[ni],items[ii]];buildProductsEditor();
+}
+
+function addCategory(){
+  if(!CFG.categories)CFG.categories=[];
+  CFG.categories.push({id:'cat'+Date.now(),name:'New Category',icon:'📦',iconBg:'#2e7d45',items:[]});
+  buildProductsEditor();toast('Category added','success');
+}
+
+function deleteCategory(ci){
+  if(!confirm(`Delete category "${CFG.categories[ci].name}" and all its products?`))return;
+  CFG.categories.splice(ci,1);buildProductsEditor();
+}
+
+function moveCat(ci,dir){
+  const ni=ci+dir;if(ni<0||ni>=CFG.categories.length)return;
+  [CFG.categories[ci],CFG.categories[ni]]=[CFG.categories[ni],CFG.categories[ci]];
+  buildProductsEditor();
+}
+
+function collectProducts(){
+  const blocks=document.querySelectorAll('.cat-block');
+  CFG.categories=[];
+  blocks.forEach(block=>{
+    const ci=parseInt(block.dataset.ci);
+    const cat={
+      id:'cat'+ci,
+      name:block.querySelector('.cat-name-inp')?.value||'',
+      icon:block.querySelector('.cat-icon-inp')?.value||'📦',
+      iconBg:block.querySelector('.cat-iconbg-inp')?.value||'#2e7d45',
+      items:[]
+    };
+    block.querySelectorAll('.item-card').forEach(card=>{
+      const pairs=[];
+      card.querySelectorAll('.price-pair-row').forEach(row=>{
+        const u=row.querySelector('.inp-unit')?.value||'';
+        const p=row.querySelector('.inp-price')?.value||'0';
+        pairs.push({unit:u,price:parseFloat(p)||0});
+      });
+      cat.items.push({
+        id:'item'+Date.now()+Math.random(),
+        name:card.querySelector('.iname')?.value||'',
+        imageUrl:card.querySelector('.iimg')?.value||'',
+        badge:card.querySelector('.ibadge')?.value||'',
+        prices:pairs
+      });
+    });
+    CFG.categories.push(cat);
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   TICKER EDITOR
+══════════════════════════════════════════════════════════ */
+const colorOpts=['c1','c2','c3','c4','c5','c6','c7'].map(c=>`<option value="${c}">${c}</option>`).join('');
+
+function buildTickerEditor(){
+  const root=document.getElementById('tickerEditor');root.innerHTML='';
+  (CFG.ticker||[]).forEach((t,i)=>{
+    const row=document.createElement('div');row.className='ticker-row';
+    row.innerHTML=`<span style="color:var(--muted);cursor:default;font-size:1rem;padding:0 4px">⠿</span>
+      <input value="${esc(t.text)}" placeholder="Ticker message…" style="flex:1"/>
+      <select>${colorOpts.replace(`value="${t.color}"`,`value="${t.color}" selected`)}</select>
+      <button class="btn btn-danger btn-sm" onclick="this.parentNode.remove()">✕</button>`;
+    root.appendChild(row);
+  });
+}
+function addTickerItem(){
+  const root=document.getElementById('tickerEditor');
+  const row=document.createElement('div');row.className='ticker-row';
+  row.innerHTML=`<span style="color:var(--muted);cursor:default;font-size:1rem;padding:0 4px">⠿</span>
+    <input value="🆕 New announcement" style="flex:1"/>
+    <select>${colorOpts}</select>
+    <button class="btn btn-danger btn-sm" onclick="this.parentNode.remove()">✕</button>`;
+  root.appendChild(row);
+}
+function collectTicker(){
+  CFG.ticker=[];
+  document.querySelectorAll('.ticker-row').forEach(row=>{
+    const inp=row.querySelector('input');const sel=row.querySelector('select');
+    if(inp&&sel)CFG.ticker.push({text:inp.value,color:sel.value});
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   STATS EDITOR
+══════════════════════════════════════════════════════════ */
+function buildStatsEditor(){
+  const root=document.getElementById('statsEditor');root.innerHTML='';
+  (CFG.stats||[]).forEach((s,i)=>{
+    const row=document.createElement('div');row.className='stat-row';
+    row.innerHTML=`<input value="${esc(s.number)}" placeholder="8 AM" style="max-width:120px"/>
+      <input value="${esc(s.label)}" placeholder="Opens Daily"/>
+      <button class="btn btn-danger btn-sm" onclick="this.parentNode.remove()">✕</button>`;
+    root.appendChild(row);
+  });
+}
+function addStatItem(){
+  const root=document.getElementById('statsEditor');
+  const row=document.createElement('div');row.className='stat-row';
+  row.innerHTML=`<input value="New" placeholder="Value" style="max-width:120px"/>
+    <input value="Label" placeholder="Label"/>
+    <button class="btn btn-danger btn-sm" onclick="this.parentNode.remove()">✕</button>`;
+  root.appendChild(row);
+}
+function collectStats(){
+  CFG.stats=[];
+  document.querySelectorAll('.stat-row').forEach(row=>{
+    const inputs=row.querySelectorAll('input');
+    if(inputs.length>=2)CFG.stats.push({number:inputs[0].value,label:inputs[1].value});
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   WHY US EDITOR
+══════════════════════════════════════════════════════════ */
+function buildWhyEditor(){
+  const root=document.getElementById('whyEditor');root.innerHTML='';
+  (CFG.whyUs||[]).forEach((w,i)=>{
+    const card=document.createElement('div');card.className='why-card-edit';
+    card.innerHTML=`<div class="form-grid" style="grid-template-columns:70px 1fr 1fr;gap:10px;align-items:start">
+        <div class="field"><label>Icon</label><input value="${esc(w.icon)}" placeholder="🌿" style="font-size:1.4rem;text-align:center"/></div>
+        <div class="field"><label>Title</label><input value="${esc(w.title)}" placeholder="Title"/></div>
+        <div class="field"><label>Description</label><textarea rows="2">${esc(w.desc)}</textarea></div>
+      </div>
+      <button class="btn btn-danger btn-sm" style="margin-top:8px" onclick="this.parentNode.remove()">✕ Remove Card</button>`;
+    root.appendChild(card);
+  });
+}
+function addWhyItem(){
+  const root=document.getElementById('whyEditor');
+  const card=document.createElement('div');card.className='why-card-edit';
+  card.innerHTML=`<div class="form-grid" style="grid-template-columns:70px 1fr 1fr;gap:10px;align-items:start">
+      <div class="field"><label>Icon</label><input value="✨" style="font-size:1.4rem;text-align:center"/></div>
+      <div class="field"><label>Title</label><input value="New Benefit"/></div>
+      <div class="field"><label>Description</label><textarea rows="2">Describe this benefit.</textarea></div>
+    </div>
+    <button class="btn btn-danger btn-sm" style="margin-top:8px" onclick="this.parentNode.remove()">✕ Remove Card</button>`;
+  root.appendChild(card);
+}
+function collectWhy(){
+  CFG.whyUs=[];
+  document.querySelectorAll('.why-card-edit').forEach(card=>{
+    const inputs=card.querySelectorAll('input,textarea');
+    if(inputs.length>=3)CFG.whyUs.push({icon:inputs[0].value,title:inputs[1].value,desc:inputs[2].value});
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   HOURS EDITOR
+══════════════════════════════════════════════════════════ */
+function buildHoursEditor(){
+  const root=document.getElementById('hoursEditor');root.innerHTML='';
+  (CFG.hours||[]).forEach((h,i)=>{
+    const row=document.createElement('div');row.className='hours-row';
+    row.innerHTML=`<input value="${esc(h.day)}" placeholder="Day / Range" style="max-width:180px"/>
+      <input value="${esc(h.time)}" placeholder="Time or note"/>
+      <label style="display:flex;align-items:center;gap:6px;white-space:nowrap;color:var(--muted);font-size:.8rem">
+        <input type="checkbox" ${h.closed?'checked':''}/> Closed (red)
+      </label>
+      <button class="btn btn-danger btn-sm" onclick="this.parentNode.remove()">✕</button>`;
+    root.appendChild(row);
+  });
+}
+function addHoursRow(){
+  const root=document.getElementById('hoursEditor');
+  const row=document.createElement('div');row.className='hours-row';
+  row.innerHTML=`<input value="New Day" placeholder="Day" style="max-width:180px"/>
+    <input value="9:00 AM – 6:00 PM" placeholder="Time"/>
+    <label style="display:flex;align-items:center;gap:6px;white-space:nowrap;color:var(--muted);font-size:.8rem">
+      <input type="checkbox"/> Closed (red)
+    </label>
+    <button class="btn btn-danger btn-sm" onclick="this.parentNode.remove()">✕</button>`;
+  root.appendChild(row);
+}
+function collectHours(){
+  CFG.hours=[];
+  document.querySelectorAll('.hours-row').forEach(row=>{
+    const inputs=row.querySelectorAll('input:not([type=checkbox])');
+    const chk=row.querySelector('input[type=checkbox]');
+    if(inputs.length>=2)CFG.hours.push({day:inputs[0].value,time:inputs[1].value,closed:chk?chk.checked:false});
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   ALL TEXTS EDITOR
+══════════════════════════════════════════════════════════ */
+const TEXT_LABELS={
+  'freshLabel':'Fresh Section Label (small text)',
+  'freshTitle':'Fresh Section Heading',
+  'freshSub':'Fresh Section Subtitle',
+  'update-note':'Price Update Note',
+  'whyLabel':'Why Us Section Label',
+  'whyTitle':'Why Us Heading',
+  'footer-brand-tagline':'Footer Tagline',
+  'footer-note':'Footer Bottom Note'
+};
+function buildTextsEditor(){
+  const root=document.getElementById('textsEditor');
+  root.innerHTML='<div class="section-card-title">Site Text Content</div><div class="form-grid-1" id="textsGrid"></div>';
+  const grid=document.getElementById('textsGrid');
+  // Build a map supporting both array-style and object-style config
+  const map={};
+  if(Array.isArray(CFG.sections)){
+    CFG.sections.forEach(s=>{map[s.id]=s.text;});
+    // also map the new key names
+    if(map['fresh-label']&&!map.freshLabel)map.freshLabel=map['fresh-label'];
+    if(map['fresh-title']&&!map.freshTitle)map.freshTitle=map['fresh-title'];
+    if(map['fresh-sub']&&!map.freshSub)map.freshSub=map['fresh-sub'];
+    if(map['why-label']&&!map.whyLabel)map.whyLabel=map['why-label'];
+    if(map['why-title']&&!map.whyTitle)map.whyTitle=map['why-title'];
+  } else if(CFG.sections&&typeof CFG.sections==='object'){
+    Object.assign(map,CFG.sections);
+  }
+  Object.entries(TEXT_LABELS).forEach(([id,label])=>{
+    const f=document.createElement('div');f.className='field';
+    const isLong=['freshSub','update-note','footer-brand-tagline','footer-note'].includes(id);
+    f.innerHTML=`<label>${label}</label>${isLong?`<textarea rows="2" id="txt-${id}">${esc(map[id]||map[id.replace('-','')]||'')}</textarea>`:`<input type="text" id="txt-${id}" value="${esc(map[id]||map[id.replace('-','')]||'')}"/>` }`;
+    grid.appendChild(f);
+  });
+}
+function collectTexts(){
+  const obj={};
+  Object.keys(TEXT_LABELS).forEach(id=>{
+    const el=document.getElementById('txt-'+id);
+    if(el)obj[id]=el.value;
+  });
+  CFG.sections=obj;
+}
+
+/* ══════════════════════════════════════════════════════════
+   UTILITIES
+══════════════════════════════════════════════════════════ */
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+</script>
+</body>
+</html>

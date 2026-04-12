@@ -137,14 +137,6 @@
       "url": "https://maps.app.goo.gl/KnAvfQ67dY2ooY4f7",
       "type": "custom",
       "color": "lbtn-blue"
-    },
-    {
-      "icon": "💬",
-      "label": "Order on WhatsApp",
-      "sublabel": "",
-      "url": "https://wa.me/9709612863?text=Namaste",
-      "type": "custom",
-      "color": "lbtn-wa"
     }
   ],
   "categories": [
@@ -155,7 +147,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17760013511150.5475569210335144",
+          "id": "item17760017747660.8450008797154751",
           "name": "गोलो आलु • Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "hot",
@@ -171,7 +163,7 @@
           ]
         },
         {
-          "id": "item17760013511150.3938860162491883",
+          "id": "item17760017747660.34273971958577",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "hot",

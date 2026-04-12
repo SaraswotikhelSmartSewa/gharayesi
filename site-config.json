@@ -3,7 +3,7 @@
     "shopName": "सरस्वतीखेल स्मार्ट सेवा - घरायेसी",
     "shopNameHighlight": "घरायेसी ",
     "tagline": "सुरुवात एक अटुट सम्बन्धको",
-    "location": "बस्पार्कबाट मन्दिर जाने उकालो तर्फ",
+    "location": "बस्पार्कबाट मन्दिर जाने उकालो तर्फ - https://maps.app.goo.gl/KnAvfQ67dY2ooY4f7",
     "badgeText": "सरस्वतीखेल",
     "whatsappNumber": "9709612863",
     "whatsappMessage": "नमस्ते ! 🙏 आज के अर्डर गर्न चहानुहुन्छ?  Namaste! What are we ordering today?",
@@ -122,7 +122,7 @@
     },
     {
       "id": "update-note",
-      "text": "📌 हाम्रोमा मूल्यहरू दैनिक रूपमा अपडेट हुने गर्दछन्। सामानको माग उच्च हुने भएकोले स्टक चाँडै सकिन सक्छ। सामानको ताजापन र समयमै उपलब्धता सुनिश्चित गर्नका लागि बिहान ११ बजेभन्दा अगाडि नै हामीलाई WhatsApp मार्फत अर्डर पठाउनुहोला।\nPrices update daily. Items sell out fast. Best to WhatsApp us before 11 AM to reserve your order and guarantee freshness."
+      "text": "📌 हाम्रोमा मूल्यहरू दैनिक रूपमा अपडेट हुने गर्दछन्। सामानको माग उच्च हुने भएकोले स्टक चाँडै सकिन सक्छ। सामानको ताजापन र समयमै उपलब्धता सुनिश्चित गर्नका लागि बिहान ११ बजेभन्दा अगाडि नै हामीलाई WhatsApp मार्फत अर्डर पठाउनु उचित हुन्छ\nPrices update daily. Items sell out fast. Best to WhatsApp us before 11 AM to reserve your order and guarantee freshness."
     },
     {
       "id": "why-label",
@@ -149,7 +149,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17759608760890.6408472350290215",
+          "id": "item17759647810660.3500134905944312",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "name": "आलु • Potato",
           "unit": "किलो • kg",
@@ -157,7 +157,7 @@
           "badge": "hot"
         },
         {
-          "id": "item17759608760900.8650937005667801",
+          "id": "item17759647810660.5407267231218226",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "name": "आलु • Potato",
           "unit": "धार्नी • dharni",
@@ -165,7 +165,7 @@
           "badge": "hot"
         },
         {
-          "id": "item17759608760900.07543395920796303",
+          "id": "item17759647810660.003072656642646332",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "name": "प्याज • Onion",
           "unit": "किलो • kg",

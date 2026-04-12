@@ -6,7 +6,7 @@
     "location": "सरस्वतीखेल, भक्तपुर (बस्पार्कबाट मन्दिर जाने उकालो तर्फ)",
     "badgeText": "सरस्वतीखेल",
     "whatsappNumber": "9709612863",
-    "whatsappMessage": "Order:                      Name:                Number:            Address:              ",
+    "whatsappMessage": "Order:                      Name:                  Number:              Address:              ",
     "address": "बस्पार्कबाट मन्दिर जाने उकालो तर्फ, सरस्वतीखेल, भक्तपुर",
     "phone": "+977 9709612863",
     "logoUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/gharayesi/refs/heads/main/IMG_20260411_223531.png",
@@ -136,6 +136,14 @@
       "sublabel": "",
       "url": "https://maps.app.goo.gl/KnAvfQ67dY2ooY4f7",
       "type": "custom",
+      "color": "lbtn-map"
+    },
+    {
+      "icon": "]  📲",
+      "label": "Message us on Facebook",
+      "sublabel": "",
+      "url": "https://m.me/Zac'E.Awal",
+      "type": "wa",
       "color": "lbtn-blue"
     }
   ],
@@ -147,7 +155,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17760036019470.4975734802379872",
+          "id": "item17760063933580.2641013383604459",
           "name": "गोलो आलु • Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "hot",
@@ -163,7 +171,7 @@
           ]
         },
         {
-          "id": "item17760036019470.6008382180422984",
+          "id": "item17760063933580.04033488582880129",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "hot",

@@ -608,15 +608,18 @@ function adToBS(date){
 
 /* ══════════════════════════════════════════════════════════
    LIVE CLOCK
-══════════════════════════════════════════════════════════ */
-function tick(){
+══════════════════════════════════════════════════════════ */function tick(){
   const now=new Date();
   const npt=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Kathmandu'}));
   const h=npt.getHours(),mi=npt.getMinutes(),di=npt.getDay();
-  const isOpen=h>=7&&h<18;
+  const isOpen=h>=9&&h<18;
   const statusDots=document.querySelectorAll('.open-dot,.mdt-dot');
+  statusDots.forEach(d=>{
+    d.style.background=isOpen?'#4ade80':'#ef4444';
+    d.style.boxShadow=isOpen?'0 0 6px #4ade80':'0 0 6px #ef4444';
+    d.classList.toggle('closed',!isOpen);
+  });
   const statusTexts=document.querySelectorAll('#openSub2');
-  statusDots.forEach(d=>{d.style.background=isOpen?'#4ade80':'#ef4444';d.style.boxShadow=isOpen?'0 0 6px #4ade80':'0 0 6px #ef4444';});
   statusTexts.forEach(t=>{t.textContent=isOpen?'Open Now · NPT':'Closed · NPT';});
   const openRow=document.querySelector('.open-row');
   if(openRow)openRow.innerHTML=`<span class="open-dot"></span>${isOpen?'Open Now · NPT':'Closed Now · NPT'}`;

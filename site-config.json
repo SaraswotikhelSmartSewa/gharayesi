@@ -186,21 +186,9 @@
     }
   ],
   "navLinks": [
-    {
-      "label": "ताजा सूची • Fresh Lists",
-      "anchor": "fresh"
-    },
-    {
-      "label": "हाम्रो बाचा • Why us?",
-      "anchor": "why"
-    },
-    {
-      "label": "हाम्रो पसल • Our Store",
-      "anchor": "findUs"
-    },
-    {
-      "label": "समय • Timings",
-      "anchor": "footer-sec"
-    }
-  ]
+  {"label": "ताजा सूची • Fresh Lists", "anchor": "#fresh"},
+  {"label": "हाम्रो बाचा • Why us?", "anchor": "#why"},
+  {"label": "हाम्रो पसल • Our Store", "anchor": "#findUs"},
+  {"label": "समय • Timings", "anchor": "#footer-sec"}
+]
 }

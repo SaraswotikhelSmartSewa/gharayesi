@@ -155,8 +155,8 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17760076951250.2933641472119536",
-          "name": "गोलो आलु • Potato",
+          "id": "item17760556479190.8848113339897805",
+          "name": "गोलो आलु • Round Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "hot",
           "prices": [
@@ -171,7 +171,23 @@
           ]
         },
         {
-          "id": "item17760076951250.084878290299647",
+          "id": "item17760556479190.21371242877680874",
+          "name": "लामो आलु • Long Potato",
+          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
+          "badge": "hot",
+          "prices": [
+            {
+              "unit": "किलो • kg",
+              "price": 35
+            },
+            {
+              "unit": "धार्नी • Dharni",
+              "price": 75
+            }
+          ]
+        },
+        {
+          "id": "item17760556479190.69379224798961",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "hot",
@@ -186,9 +202,21 @@
     }
   ],
   "navLinks": [
-  {"label": "ताजा सूची • Fresh Lists", "anchor": "#fresh"},
-  {"label": "हाम्रो बाचा • Why us?", "anchor": "#why"},
-  {"label": "हाम्रो पसल • Our Store", "anchor": "#findUs"},
-  {"label": "समय • Timings", "anchor": "#footer-sec"}
-]
+    {
+      "label": "ताजा सूची • Fresh Lists",
+      "anchor": "#fresh"
+    },
+    {
+      "label": "हाम्रो बाचा • Why us?",
+      "anchor": "#why"
+    },
+    {
+      "label": "हाम्रो पसल • Our Store",
+      "anchor": "#findUs"
+    },
+    {
+      "label": "समय • Timings",
+      "anchor": "#footer-sec"
+    }
+  ]
 }

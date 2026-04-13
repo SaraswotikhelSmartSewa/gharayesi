@@ -2,7 +2,7 @@
   "meta": {
     "shopName": "सरस्वतीखेल स्मार्ट सेवा - घरायेसी",
     "shopNameHighlight": "घरायेसी",
-    "tagline": "सुरुवात एक अटुट सम्बन्धको — ताजा तरकारी र दैनिक उपभोग्य वस्तुहरू अब तपाईंको ढोकामै।",
+    "tagline": "सुरुवात एक अटुट सम्बन्धको",
     "location": "सरस्वतीखेल, भक्तपुर (बस्पार्कबाट मन्दिर जाने उकालो तर्फ)",
     "badgeText": "सरस्वतीखेल",
     "whatsappNumber": "9709612863",
@@ -188,19 +188,19 @@
   "navLinks": [
     {
       "label": "ताजा सूची • Fresh Lists",
-      "anchor": "•  fresh"
+      "anchor": "fresh"
     },
     {
       "label": "हाम्रो बाचा • Why us?",
-      "anchor": "•  why"
+      "anchor": "why"
     },
     {
       "label": "हाम्रो पसल • Our Store",
-      "anchor": "•  findUs"
+      "anchor": "findUs"
     },
     {
       "label": "समय • Timings",
-      "anchor": "•  footer-sec"
+      "anchor": "footer-sec"
     }
   ]
 }

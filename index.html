@@ -612,7 +612,7 @@ function adToBS(date){
   const now=new Date();
   const npt=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Kathmandu'}));
   const h=npt.getHours(),mi=npt.getMinutes(),di=npt.getDay();
-  const isOpen=h>=9&&h<18;
+  const isOpen=h>=7&&h<18;
   const statusDots=document.querySelectorAll('.open-dot,.mdt-dot');
   statusDots.forEach(d=>{
     d.style.background=isOpen?'#4ade80':'#ef4444';

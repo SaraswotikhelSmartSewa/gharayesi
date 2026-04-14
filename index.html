@@ -842,7 +842,7 @@ setInterval(tick,1000);
    No JS ever touches opacity of visible elements.
 ══════════════════════════════════════════════════════════ */
 function initScrollReveal(){
-  const els=document.querySelectorAll('.will-reveal');
+  const els=document.querySelectorAll('.will-reveal, .reveal-fast');
   if(!els.length)return;
   const obs=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{

@@ -155,8 +155,8 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17760556479190.8848113339897805",
-          "name": "गोलो आलु • Round Potato",
+          "id": "item17760564172320.5571508037800994",
+          "name": "डल्ले आलु • Round Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "hot",
           "prices": [
@@ -171,7 +171,7 @@
           ]
         },
         {
-          "id": "item17760556479190.21371242877680874",
+          "id": "item17760564172320.8420086465524695",
           "name": "लामो आलु • Long Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "hot",
@@ -187,7 +187,7 @@
           ]
         },
         {
-          "id": "item17760556479190.69379224798961",
+          "id": "item17760564172320.9291754567127182",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "hot",

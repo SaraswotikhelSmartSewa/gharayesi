@@ -645,13 +645,20 @@ setInterval(tick,1000);
 /* ══════════════════════════════════════════════════════════
    LOAD CONFIG & RENDER
 ══════════════════════════════════════════════════════════ */
+// Config is embedded directly — no fetch needed (avoids GitHub Pages cache/CORS issues)
+const SITE_CONFIG = {"meta":{"shopName":"सरस्वतीखेल स्मार्ट सेवा - घरायेसी","shopNameHighlight":"घरायेसी","tagline":"सुरुवात एक अटुट सम्बन्धको","location":"सरस्वतीखेल, भक्तपुर (बस्पार्कबाट मन्दिर जाने उकालो तर्फ)","badgeText":"सरस्वतीखेल","whatsappNumber":"9709612863","whatsappMessage":"Order:                      Name:                  Number:              Address:              ","address":"बस्पार्कबाट मन्दिर जाने उकालो तर्फ, सरस्वतीखेल, भक्तपुर","phone":"+977 9709612863","logoUrl":"https://raw.githubusercontent.com/SaraswotikhelSmartSewa/gharayesi/refs/heads/main/IMG_20260411_223531.png","faviconUrl":"https://raw.githubusercontent.com/SaraswotikhelSmartSewa/gharayesi/refs/heads/main/IMG_20260411_223531.png"},"theme":{"colorCream":"#fdf6ec","colorBark":"#3b2a1a","colorLeaf":"#2e7d45","colorSaffron":"#e8880a","colorMango":"#fbbf24","colorTomato":"#e03535","colorSky":"#1e9fd4","colorLavender":"#7c5cbf","colorChili":"#d14b0f","colorWhatsapp":"#25D366","bgMain":"#fdf6ec","bgHeader":"#2e7d45","bgWhy":"#3b2a1a","bgFooter":"#241809","grainOpacity":"0.04"},"fonts":{"headingFont":"Playfair Display","bodyFont":"DM Sans","monoFont":"Space Mono","headingFontUrl":"https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap","bodyFontUrl":"https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap","monoFontUrl":"https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap","shopNameSize":"clamp(2.8rem,10vw,3.8rem)","sectionTitleSize":"clamp(1.7rem,5vw,2.2rem)","bodySize":"0.9rem","useDevanagari":true,"devanagariFont":"Tiro Devanagari Hindi","devanagariUrl":"https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap"},"stats":[{"number":"8 AM","label":"दैनिक खुल्ने समय • Opens Daily"},{"number":"8 PM","label":"दैनिक बन्द हुने समय • Last Order"},{"number":"4.9★","label":"Local Rating"}],"hours":[{"day":"आईतबार - शुक्रबार","time":"8:00 AM – 8:00 PM","closed":false},{"day":"शनिबार","time":"8:00 AM – 8:00 PM","closed":false},{"day":"Dashain / Tihar","time":"Special Hours","closed":false},{"day":"Public Holidays","time":"Verify on Message or Call","closed":true}],"ticker":[{"text":"🏠घरमै बसि अर्डर गर्नको लागि ह्वाट्सएप (WhatsApp) मा सम्पर्क गर्नुहोला","color":"c1"},{"text":"Order from home via WhatsApp! 🏠","color":"c1"},{"text":"🎉 नयाँ वर्ष २०८३ को हार्दिक शुभकामना!","color":"c2"},{"text":"Happy New Year 2083 BS! 🎉","color":"c2"}],"whyUs":[{"icon":"🌿","title":"ताजा उत्पादन • Fresh products","desc":"हरेक दिन ताजा ल्याइने। कोल्ड स्टोरमा नराखिएको • Daily sourced, no cold storage."},{"icon":"💬","title":"सजिलो WhatsApp अर्डर","desc":"तपाईंको अर्डर टाइप गर्नुहोस् र घरमै पाउनुहोस् । सुन्दा जति सजिलो काम पनि त्यति नै सजिलो। • Just type in your order and get them at your door • As easy as it sounds."},{"icon":"⚡","title":"छिटो डेलिभरी • Quick Delivery","desc":"तपाईंको आफ्नै टोलबाट द्रुत डेलिभरी । छिटो र छरितो स्थानीय सेवा • Fast delivery from your own neighborhood. Quick and efficient local service."},{"icon":"🤝","title":"उचित मूल्य • Fair Prices","desc":"हाम्रो मूल्य सिधै कालिमाटीको थोक बजार भाउमा आधारित छ • Our prices are based directly on the Kalimati wholesale market rates."}],"sections":{"freshLabel":"Updated Daily","freshTitle":"आजको ताजा सूची • Today's Fresh List","freshSub":"मूल्य • Prices shown per unit.","update-note":"📌 मूल्यहरू दैनिक रूपमा अपडेट हुन्छन्। ताजापन सुनिश्चित गर्न बिहान ११ बजेभन्दा अगाडि नै अर्डर गर्नुहोला।","whyLabel":"तपाईंका छिमेकीहरूले हामीलाई किन विश्वास गर्छन् त? • Why Neighbors Trust Us","whyTitle":"हाम्रा विशेषता • Our Service","footer-brand-tagline":"सरस्वतीखेलको मुटुमा, दैनिक ताजा सामग्रीका लागि तपाईंको छिमेककै भरपर्दो पसल।","footer-note":"सरस्वतीखेल समुदायको सेवामा समर्पित 🌿"},"links":[{"icon":"📍","label":"Find Us on Map","sublabel":"","url":"https://maps.app.goo.gl/KnAvfQ67dY2ooY4f7","type":"custom","color":"lbtn-map"},{"icon":"]  📲","label":"Facebook","sublabel":"Message us on","url":"https://www.facebook.com/GharayesiSewa","type":"custom","color":"lbtn-blue"}],"categories":[{"id":"cat0","name":"तरकारीहरू • Vegetables","icon":"🥬","iconBg":"#2e7d45","items":[{"id":"item17760564172320.5571508037800994","name":"डल्ले आलु • Round Potato","imageUrl":"https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true","badge":"hot","prices":[{"unit":"किलो • kg","price":30},{"unit":"धार्नी • Dharni","price":65}]},{"id":"item17760564172320.8420086465524695","name":"लामो आलु • Long Potato","imageUrl":"https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true","badge":"hot","prices":[{"unit":"किलो • kg","price":35},{"unit":"धार्नी • Dharni","price":75}]},{"id":"item17760564172320.9291754567127182","name":"प्याज • Onion","imageUrl":"https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true","badge":"hot","prices":[{"unit":"किलो • kg","price":50}]}]}],"navLinks":[{"label":"ताजा सूची • Fresh Lists","anchor":"#fresh"},{"label":"हाम्रो बाचा • Why us?","anchor":"#why"},{"label":"हाम्रो पसल • Our Store","anchor":"#findUs"},{"label":"समय • Timings","anchor":"#footer-sec"}]};
+
 async function init(){
-  let cfg;
+  let cfg = SITE_CONFIG;
+  // Still try to fetch a fresh copy if available (for admin updates), fall back to embedded
   try{
-    const r=await fetch('site-config.json?v='+Date.now());
-    cfg=await r.json();
+    const r = await Promise.race([
+      fetch('site-config.json?v='+Date.now()),
+      new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),3000))
+    ]);
+    if(r.ok) cfg = await r.json();
   }catch(e){
-    cfg=getDefaultConfig();
+    // Use embedded config silently
   }
   applyConfig(cfg);
   setTimeout(initReelAnimation,600);
@@ -889,8 +896,8 @@ function initReelAnimation(){
   cards.forEach(c=>{
     const r=c.getBoundingClientRect();
     const inView=r.top<window.innerHeight&&r.bottom>0;
-    if(inView){c.style.opacity='1';}  // already visible — show immediately, no animation
-    else{c.style.opacity='0';obs.observe(c);}  // below fold — animate in on scroll
+    if(inView){c.style.opacity='1';}
+    else{c.style.opacity='0';obs.observe(c);}
   });
 }
 

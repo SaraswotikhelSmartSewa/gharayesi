@@ -36,27 +36,72 @@
     "headingFontUrl": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap",
     "bodyFontUrl": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap",
     "monoFontUrl": "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap",
-    "bodySize": "0.9rem",
+    "bodySize": "0.8rem",
     "useDevanagari": true,
     "devanagariFont": "Tiro Devanagari Hindi",
     "devanagariUrl": "https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap"
   },
   "stats": [
-    { "number": "8 AM", "label": "दैनिक खुल्ने समय • Opens Daily" },
-    { "number": "8 PM", "label": "दैनिक बन्द हुने समय • Last Order" },
-    { "number": "4.9★", "label": "Local Rating" }
+    {
+      "number": "8 AM",
+      "label": "दैनिक खुल्ने समय • Opens Daily"
+    },
+    {
+      "number": "8 PM",
+      "label": "दैनिक बन्द हुने समय • Last Order"
+    },
+    {
+      "number": "4.9★",
+      "label": "Local Rating"
+    }
   ],
   "hours": [
-    { "day": "आईतबार - शुक्रबार", "time": "8:00 AM – 8:00 PM", "closed": false },
-    { "day": "शनिबार", "time": "8:00 AM – 8:00 PM", "closed": false },
-    { "day": "Dashain / Tihar", "time": "Special Hours", "closed": false },
-    { "day": "Public Holidays", "time": "Verify on Message or Call", "closed": true }
+    {
+      "day": "आईतबार - शुक्रबार",
+      "time": "8:00 AM – 8:00 PM",
+      "closed": false
+    },
+    {
+      "day": "शनिबार",
+      "time": "8:00 AM – 8:00 PM",
+      "closed": false
+    },
+    {
+      "day": "Dashain / Tihar",
+      "time": "Special Hours",
+      "closed": false
+    },
+    {
+      "day": "Public Holidays",
+      "time": "Verify on Message or Call",
+      "closed": true
+    }
   ],
   "ticker": [
-    { "text": "🏠घरमै बसि अर्डर गर्नको लागि ह्वाट्सएप (WhatsApp) मा सम्पर्क गर्नुहोला", "color": "c1" },
-    { "text": "Order from home via WhatsApp! 🏠", "color": "c1" },
-    { "text": "🎉 नयाँ वर्ष २०८३ को हार्दिक शुभकामना!", "color": "c2" },
-    { "text": "Happy New Year 2083 BS! 🎉", "color": "c2" }
+    {
+      "text": "🏠घरमै बसि अर्डर गर्नको लागि ह्वाट्सएप (WhatsApp) मा सम्पर्क गर्नुहोला",
+      "color": "c1"
+    },
+    {
+      "text": "Order from home via WhatsApp! 🏠",
+      "color": "c2"
+    },
+    {
+      "text": "🎉 नयाँ वर्ष २०८३ को हार्दिक शुभकामना!",
+      "color": "c3"
+    },
+    {
+      "text": "Happy New Year 2083 BS! 🎉",
+      "color": "c1"
+    },
+    {
+      "text": "🛵 मात्र रु २५ मा घरमै डेलिभरी!",
+      "color": "c2"
+    },
+    {
+      "text": "Home delivery for just Rs. 25! 🛵",
+      "color": "c3"
+    }
   ],
   "whyUs": [
     {
@@ -116,41 +161,52 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item001",
+          "id": "item17764995709280.9886096018501557",
           "name": "डल्ले आलु • Round Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
-          "badge": "hot",
+          "badge": "sale",
           "prices": [
-            { "unit": "किलो • kg", "price": 30 },
-            { "unit": "धार्नी • Dharni", "price": 65 }
+            {
+              "unit": "किलो • kg",
+              "price": 30
+            },
+            {
+              "unit": "धार्नी • Dharni",
+              "price": 65
+            }
           ]
         },
         {
-          "id": "item002",
-          "name": "लामो आलु • Long Potato",
-          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
-          "badge": "hot",
-          "prices": [
-            { "unit": "किलो • kg", "price": 35 },
-            { "unit": "धार्नी • Dharni", "price": 75 }
-          ]
-        },
-        {
-          "id": "item003",
+          "id": "item17764995709290.9356069701547337",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
-          "badge": "hot",
+          "badge": "sale",
           "prices": [
-            { "unit": "किलो • kg", "price": 50 }
+            {
+              "unit": "किलो • kg",
+              "price": 50
+            }
           ]
         }
       ]
     }
   ],
   "navLinks": [
-    { "label": "ताजा सूची • Fresh Lists", "anchor": "#fresh" },
-    { "label": "हाम्रो बाचा • Why us?", "anchor": "#why" },
-    { "label": "हाम्रो पसल • Our Store", "anchor": "#findUs" },
-    { "label": "समय • Timings", "anchor": "#footer-sec" }
+    {
+      "label": "ताजा सूची • Fresh Lists",
+      "anchor": "#fresh"
+    },
+    {
+      "label": "हाम्रो बाचा • Why us?",
+      "anchor": "#why"
+    },
+    {
+      "label": "हाम्रो पसल • Our Store",
+      "anchor": "#findUs"
+    },
+    {
+      "label": "समय • Timings",
+      "anchor": "#footer-sec"
+    }
   ]
 }

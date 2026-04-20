@@ -161,7 +161,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17766531490750.46830741191550884",
+          "id": "item17766535505300.6063210125287882",
           "name": "डल्ले आलु • Round Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "sale",
@@ -177,7 +177,7 @@
           ]
         },
         {
-          "id": "item17766531490750.878662767917887",
+          "id": "item17766535505300.3251128730147552",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "sale",
@@ -189,7 +189,7 @@
           ]
         },
         {
-          "id": "item17766531490750.23236545056063906",
+          "id": "item17766535505300.4397083262115352",
           "name": "Delivery",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/gharayesi/blob/main/Gemini_Generated_Image_fou4gxfou4gxfou4.png?raw=true",
           "badge": "hot",
@@ -220,5 +220,11 @@
       "label": "समय • Timings",
       "anchor": "#footer-sec"
     }
-  ]
+  ],
+  "findUs": {
+    "show": false,
+    "label": "Find Us",
+    "title": "Visit Our Shop",
+    "cards": []
+  }
 }

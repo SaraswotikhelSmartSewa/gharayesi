@@ -161,7 +161,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17764997137400.7861976682778338",
+          "id": "item17766531490750.46830741191550884",
           "name": "डल्ले आलु • Round Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "sale",
@@ -177,7 +177,7 @@
           ]
         },
         {
-          "id": "item17764997137400.3767262679298883",
+          "id": "item17766531490750.878662767917887",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "sale",
@@ -185,6 +185,18 @@
             {
               "unit": "किलो • kg",
               "price": 50
+            }
+          ]
+        },
+        {
+          "id": "item17766531490750.23236545056063906",
+          "name": "Delivery",
+          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/gharayesi/blob/main/Gemini_Generated_Image_fou4gxfou4gxfou4.png?raw=true",
+          "badge": "hot",
+          "prices": [
+            {
+              "unit": "Per delivery",
+              "price": 25
             }
           ]
         }

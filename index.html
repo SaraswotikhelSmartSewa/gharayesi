@@ -262,7 +262,27 @@ header{background:var(--leaf);position:relative;overflow:hidden}
 .map-embed-wrap{border-radius:16px;overflow:hidden;height:320px;margin-top:24px;border:2px solid rgba(255,255,255,.1)}
 @media(min-width:768px){.map-embed-wrap{height:420px}}
 
-/* ══ LANG TOGGLE ══ */
+/* ══ SPLASH AD ══ */
+@keyframes splashIn{from{opacity:0}to{opacity:1}}
+@keyframes splashOut{from{opacity:1}to{opacity:0;pointer-events:none}}
+.splash-ad{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;animation:splashIn .4s ease;backdrop-filter:blur(8px);}
+.splash-ad.hiding{animation:splashOut .5s ease forwards}
+.splash-ad-inner{position:relative;max-width:480px;width:90%;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);}
+.splash-ad-img{width:100%;display:block;max-height:70vh;object-fit:cover;}
+.splash-ad-link{display:block;text-decoration:none}
+.splash-ad-close-bar{background:rgba(0,0,0,.7);color:#fff;text-align:center;padding:12px;font-size:.84rem;display:flex;align-items:center;justify-content:space-between;gap:10px;backdrop-filter:blur(4px);}
+.splash-ad-timer{font-family:var(--font-mono);font-size:.78rem;background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px}
+.splash-close-btn{background:var(--leaf);color:#fff;border:none;border-radius:8px;padding:6px 16px;font-weight:700;font-size:.8rem;cursor:pointer;transition:background .15s;}
+.splash-close-btn:hover{background:#246038}
+.splash-skip{font-size:.72rem;color:rgba(255,255,255,.5);cursor:pointer;text-align:center;margin-top:10px;text-decoration:underline;}
+
+/* ══ INLINE BANNERS ══ */
+.banner-slot{width:100%;overflow:hidden;display:none}
+.banner-slot.has-banner{display:block}
+.banner-slot img{width:100%;display:block;border-radius:12px}
+.banner-slot a{display:block}
+.banner-slot-padded{padding:0 20px 20px}
+@media(min-width:768px){.banner-slot-padded{padding:0 60px 24px}}
 .lang-toggle{display:flex;align-items:center;gap:6px;background:rgba(59,42,26,.07);border:1.5px solid rgba(59,42,26,.1);border-radius:999px;padding:4px;cursor:pointer;flex-shrink:0}
 .lang-opt{padding:4px 12px;border-radius:999px;font-size:.7rem;font-weight:700;transition:all .15s;color:rgba(59,42,26,.5);}
 .lang-opt.active{background:var(--leaf);color:#fff}
@@ -428,6 +448,21 @@ address strong{color:#fff}
 </head>
 <body>
 
+<!-- ══ SPLASH AD ══ -->
+<div class="splash-ad" id="splashAd" style="display:none">
+  <div class="splash-ad-inner">
+    <a id="splashAdLink" href="#" target="_blank" rel="noopener" class="splash-ad-link">
+      <img id="splashAdImg" src="" alt="Advertisement" class="splash-ad-img"/>
+    </a>
+    <div class="splash-ad-close-bar">
+      <span id="splashAdLabel" style="font-size:.8rem;opacity:.8">Advertisement</span>
+      <span class="splash-ad-timer" id="splashTimer">5s</span>
+      <button class="splash-close-btn" id="splashCloseBtn" onclick="closeSplashAd()">Skip ✕</button>
+    </div>
+  </div>
+  <div class="splash-skip" onclick="closeSplashAd()">Skip advertisement</div>
+</div>
+
 <!-- ══ DESKTOP NAV ══ -->
 <nav class="desktop-nav" id="desktopNav" aria-label="Main navigation">
   <a class="nav-brand" href="#" id="navBrand">…</a>
@@ -503,6 +538,9 @@ address strong{color:#fff}
 <!-- ══ TICKER ══ -->
 <div class="ticker-wrap"><div class="ticker-track" id="tickerTrack"></div></div>
 
+<!-- ══ BANNER SLOT: After Ticker ══ -->
+<div class="banner-slot banner-slot-padded" id="bannerAfterTicker"></div>
+
 <!-- ══ FRESH LIST ══ -->
 <section id="fresh">
   <div class="section">
@@ -522,6 +560,9 @@ address strong{color:#fff}
     <div class="update-note will-reveal" id="updateNote"></div>
   </div>
 </section>
+
+<!-- ══ BANNER SLOT: After Fresh List ══ -->
+<div class="banner-slot banner-slot-padded" id="bannerAfterFresh"></div>
 
 <!-- ══ WHY US ══ -->
 <section id="why">
@@ -544,6 +585,9 @@ address strong{color:#fff}
     </div>
   </div>
 </section>
+
+<!-- ══ BANNER SLOT: After Reviews ══ -->
+<div class="banner-slot banner-slot-padded" id="bannerAfterReviews"></div>
 
 <!-- ══ MAP ══ -->
 <section id="mapSec">
@@ -746,7 +790,7 @@ window._saveOrderToFirestore = async function(orderData) {
 const EMBEDDED_CONFIG = {"meta":{"shopName":"सरस्वतीखेल स्मार्ट सेवा - घरायेसी","shopNameHighlight":"घरायेसी","tagline":"सुरुवात एक अटुट सम्बन्धको","location":"सरस्वतीखेल, भक्तपुर (बस्पार्कबाट मन्दिर जाने उकालो तर्फ)","badgeText":"सरस्वतीखेल","whatsappNumber":"9709612863","whatsappMessage":"Order:                      Name:                  Number:              Address:              ","address":"बस्पार्कबाट मन्दिर जाने उकालो तर्फ, सरस्वतीखेल, भक्तपुर","phone":"+977 9709612863","logoUrl":"https://raw.githubusercontent.com/SaraswotikhelSmartSewa/gharayesi/refs/heads/main/IMG_20260411_223531.png","faviconUrl":"https://raw.githubusercontent.com/SaraswotikhelSmartSewa/gharayesi/refs/heads/main/IMG_20260411_223531.png"},"theme":{"colorCream":"#fdf6ec","colorBark":"#3b2a1a","colorLeaf":"#2e7d45","colorSaffron":"#e8880a","colorMango":"#fbbf24","colorTomato":"#e03535","colorSky":"#1e9fd4","colorLavender":"#7c5cbf","colorChili":"#d14b0f","colorWhatsapp":"#25D366","bgMain":"#fdf6ec","bgHeader":"#2e7d45","bgWhy":"#3b2a1a","bgFooter":"#241809","grainOpacity":"0.04"},"fonts":{"headingFont":"Playfair Display","bodyFont":"DM Sans","monoFont":"Space Mono","headingFontUrl":"https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap","bodyFontUrl":"https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap","monoFontUrl":"https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap","bodySize":"0.8rem","useDevanagari":true,"devanagariFont":"Tiro Devanagari Hindi","devanagariUrl":"https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap"},"stats":[{"number":"8 AM","label":"दैनिक खुल्ने समय • Opens Daily"},{"number":"8 PM","label":"दैनिक बन्द हुने समय • Last Order"},{"number":"4.9★","label":"Local Rating"}],"hours":[{"day":"आईतबार - शुक्रबार","time":"8:00 AM – 8:00 PM","closed":false},{"day":"शनिबार","time":"8:00 AM – 8:00 PM","closed":false},{"day":"Dashain / Tihar","time":"Special Hours","closed":false},{"day":"Public Holidays","time":"Verify on Message or Call","closed":true}],"ticker":[{"text":"🏠घरमै बसि अर्डर गर्नको लागि ह्वाट्सएप (WhatsApp) मा सम्पर्क गर्नुहोला","color":"c1"},{"text":"Order from home via WhatsApp! 🏠","color":"c2"},{"text":"🎉 नयाँ वर्ष २०८३ को हार्दिक शुभकामना!","color":"c3"},{"text":"Happy New Year 2083 BS! 🎉","color":"c1"},{"text":"🛵 मात्र रु २५ मा घरमै डेलिभरी!","color":"c2"},{"text":"Home delivery for just Rs. 25! 🛵","color":"c3"}],"whyUs":[{"icon":"🌿","title":"ताजा उत्पादन • Fresh products","desc":"हरेक दिन ताजा ल्याइने। कोल्ड स्टोरमा नराखिएको • Daily sourced, no cold storage."},{"icon":"💬","title":"सजिलो WhatsApp अर्डर","desc":"तपाईंको अर्डर टाइप गर्नुहोस् र घरमै पाउनुहोस् । सुन्दा जति सजिलो काम पनि त्यति नै सजिलो। • Just type in your order and get them at your door."},{"icon":"⚡","title":"छिटो डेलिभरी • Quick Delivery","desc":"तपाईंको आफ्नै टोलबाट द्रुत डेलिभरी । छिटो र छरितो स्थानीय सेवा • Fast delivery from your own neighborhood."},{"icon":"🤝","title":"उचित मूल्य • Fair Prices","desc":"हाम्रो मूल्य सिधै कालिमाटीको थोक बजार भाउमा आधारित छ • Our prices are based directly on the Kalimati wholesale market rates."}],"sections":{"freshLabel":"Updated Daily","freshTitle":"आजको ताजा सूची • Today's Fresh List","freshSub":"मूल्य • Prices shown per unit.","update-note":"📌 मूल्यहरू दैनिक रूपमा अपडेट हुन्छन्। ताजापन सुनिश्चित गर्न बिहान ११ बजेभन्दा अगाडि नै अर्डर गर्नुहोला।","whyLabel":"तपाईंका छिमेकीहरूले हामीलाई किन विश्वास गर्छन् त? • Why Neighbors Trust Us","whyTitle":"हाम्रा विशेषता • Our Service","footer-brand-tagline":"सरस्वतीखेलको मुटुमा, दैनिक ताजा सामग्रीका लागि तपाईंको छिमेककै भरपर्दो पसल।","footer-note":"सरस्वतीखेल समुदायको सेवामा समर्पित 🌿"},"links":[{"icon":"📍","label":"Find Us on Map","sublabel":"","url":"https://maps.app.goo.gl/KnAvfQ67dY2ooY4f7","type":"custom","color":"lbtn-map"},{"icon":"📲","label":"Facebook","sublabel":"Message us on","url":"https://www.facebook.com/GharayesiSewa","type":"custom","color":"lbtn-blue"}],"categories":[{"id":"cat0","name":"तरकारीहरू • Vegetables","icon":"🥬","iconBg":"#2e7d45","items":[{"id":"item17764997137400.7861976682778338","name":"डल्ले आलु • Round Potato","imageUrl":"https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true","badge":"sale","prices":[{"unit":"किलो • kg","price":30},{"unit":"धार्नी • Dharni","price":72}]},{"id":"item17764997137400.3767262679298883","name":"प्याज • Onion","imageUrl":"https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true","badge":"sale","prices":[{"unit":"किलो • kg","price":50}]}]}],"navLinks":[{"label":"ताजा सूची • Fresh Lists","anchor":"#fresh"},{"label":"हाम्रो बाचा • Why us?","anchor":"#why"},{"label":"हाम्रो पसल • Our Store","anchor":"#findUs"},{"label":"समय • Timings","anchor":"#footer-sec"}]};
 
 /* ══ BS DATE UTILS ══ */
-const BS_DATA=[[30,32,31,32,31,30,30,30,29,29,30,30],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,30,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[30,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,31,30,29,30,29,30,30],[30,31,32,32,30,31,30,29,30,29,30,30],[30,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,29,30,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,29,30,30,29,29,31],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,29,30,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,29,30,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,29,30,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30]];
+const BS_DATA=[[30,32,31,32,31,30,30,30,29,29,30,30],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,30,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[30,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,31,30,29,30,29,30,30],[30,31,32,32,30,31,30,29,30,29,30,30],[30,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,29,30,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,29,30,30,29,29,31],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,29,30,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,29,30,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,29,30,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,32,31,31,30,30,30,29,30,29,31],[31,31,32,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,30],[31,32,31,32,31,30,30,30,29,30,29,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,32,31,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,29,30,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30],[31,31,32,32,31,30,30,29,30,29,30,30],[31,32,31,32,31,30,30,30,29,29,30,31],[31,31,31,32,31,31,30,29,30,29,30,30],[31,31,32,31,31,31,30,29,30,29,30,30]];
 const BS_START=2000;const AD_REF=new Date(1943,3,14);
 const MNP=['बैशाख','जेष्ठ','आषाढ','श्रावण','भाद्र','आश्विन','कार्तिक','मंसिर','पौष','माघ','फाल्गुन','चैत्र'];
 const ADEN=['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -1044,6 +1088,8 @@ function render(cfg){
   const fn=document.getElementById('footerNote');if(fn)fn.innerHTML=(sec['footer-note']||'')+' · Hosted free on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>';
 
   updateCartUI();
+  if(cfg.banners) renderBanners(cfg.banners);
+  if(cfg.splashAds) initSplashAd(cfg.splashAds);
   setTimeout(initScrollReveal,50);
 }
 
@@ -1171,6 +1217,61 @@ document.getElementById('pwaInstallBtn')?.addEventListener('click', async () => 
 window.dismissPWA = function(){
   document.getElementById('pwaBanner').classList.remove('show');
   localStorage.setItem('pwaDismissed','1');
+}
+
+/* ══ SPLASH AD ══ */
+let splashInterval = null;
+function initSplashAd(ads){
+  const active = (ads||[]).find(a=>a.active && a.imageUrl);
+  if(!active) return;
+  const el = document.getElementById('splashAd');
+  const img = document.getElementById('splashAdImg');
+  const link = document.getElementById('splashAdLink');
+  const timer = document.getElementById('splashTimer');
+  const closeBtn = document.getElementById('splashCloseBtn');
+  const label = document.getElementById('splashAdLabel');
+  if(!el||!img) return;
+  img.src = active.imageUrl;
+  if(active.linkUrl){ link.href = active.linkUrl; } else { link.style.pointerEvents='none'; }
+  if(active.label) label.textContent = active.label;
+  el.style.display = 'flex';
+  let secs = parseInt(active.duration)||5;
+  closeBtn.disabled = secs > 0;
+  timer.textContent = secs+'s';
+  splashInterval = setInterval(()=>{
+    secs--;
+    timer.textContent = secs > 0 ? secs+'s' : 'Close';
+    if(secs <= 0){ clearInterval(splashInterval); closeBtn.disabled = false; }
+  }, 1000);
+}
+window.closeSplashAd = function(){
+  clearInterval(splashInterval);
+  const el = document.getElementById('splashAd');
+  el.classList.add('hiding');
+  setTimeout(()=>el.style.display='none', 500);
+}
+
+/* ══ INLINE BANNERS ══ */
+function renderBanners(banners){
+  const slots = {
+    'after-ticker': 'bannerAfterTicker',
+    'after-fresh': 'bannerAfterFresh',
+    'after-reviews': 'bannerAfterReviews'
+  };
+  Object.values(slots).forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.innerHTML='';el.classList.remove('has-banner');}
+  });
+  (banners||[]).forEach(b=>{
+    if(!b.active||!b.imageUrl||!b.position) return;
+    const slotId = slots[b.position];
+    if(!slotId) return;
+    const el = document.getElementById(slotId);
+    if(!el) return;
+    const img = `<img src="${b.imageUrl}" alt="${b.label||'Banner'}" loading="lazy" style="border-radius:12px;cursor:${b.linkUrl?'pointer':'default'}" onclick="${b.linkUrl?`window.open('${b.linkUrl}','_blank')`:''}"/>`;
+    el.innerHTML = img;
+    el.classList.add('has-banner');
+  });
 }
 
 render(EMBEDDED_CONFIG);

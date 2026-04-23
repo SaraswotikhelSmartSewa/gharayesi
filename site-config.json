@@ -161,7 +161,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17769102157510.8961221607777463",
+          "id": "item17769129710910.9534436959289659",
           "name": "डल्ले आलु • Round Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "sale",
@@ -173,14 +173,14 @@
           ]
         },
         {
-          "id": "item17769102157510.19431748289109996",
+          "id": "item17769129710910.7449775198563924",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "sale",
           "prices": [
             {
               "unit": "किलो • kg",
-              "price": 45
+              "price": 46
             }
           ]
         }
@@ -210,5 +210,30 @@
     "label": "Find Us",
     "title": "Visit Our Shop",
     "cards": []
-  }
+  },
+  "splashAds": [
+    {
+      "imageUrl": "",
+      "linkUrl": "",
+      "label": "Advertisement",
+      "duration": 5,
+      "active": false
+    }
+  ],
+  "banners": [
+    {
+      "imageUrl": "https://github.com/SaraswotikhelSmartSewa/gharayesi/blob/main/Untitled%20design%20(1).jpg?raw=true",
+      "linkUrl": "",
+      "position": "after-ticker",
+      "label": "",
+      "active": false
+    },
+    {
+      "imageUrl": "",
+      "linkUrl": "",
+      "position": "after-ticker",
+      "label": "",
+      "active": false
+    }
+  ]
 }

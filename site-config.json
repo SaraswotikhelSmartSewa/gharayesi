@@ -161,7 +161,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17769157990360.3790610909588713",
+          "id": "item17770846393970.8998099460237335",
           "name": "डल्ले आलु • Round Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "sale",
@@ -173,7 +173,7 @@
           ]
         },
         {
-          "id": "item17769157990360.47745670281617003",
+          "id": "item17770846393970.08325321433522104",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "sale",
@@ -226,10 +226,14 @@
       "linkUrl": "",
       "position": "after-ticker",
       "label": "",
-      "active": false,
+      "active": true,
       "objectFit": "contain",
-      "maxWidth": 27.5,
-      "height": 15
+      "maxWidth": 418,
+      "height": 230,
+      "shadow": true,
+      "marginTop": 31,
+      "paddingH": 0,
+      "marginBottom": 0
     },
     {
       "imageUrl": "https://github.com/SaraswotikhelSmartSewa/gharayesi/blob/main/Delivery%20with%20text.png?raw=true",
@@ -237,13 +241,13 @@
       "position": "after-fresh",
       "label": "",
       "active": false,
-      "height": 15,
-      "maxWidth": 27.5,
+      "height": 230,
+      "maxWidth": 420,
       "borderRadius": 12,
       "paddingH": 20,
-      "marginTop": 0,
-      "marginBottom": 20,
-      "objectFit": "cover",
+      "marginTop": 30,
+      "marginBottom": 0,
+      "objectFit": "contain",
       "shadow": true,
       "bgColor": ""
     },
@@ -251,15 +255,15 @@
       "imageUrl": "https://github.com/SaraswotikhelSmartSewa/gharayesi/blob/main/Delivery%20with%20text.png?raw=true",
       "linkUrl": "",
       "position": "after-reviews",
-      "label": "1",
+      "label": "",
       "active": false,
-      "height": 15,
-      "maxWidth": 28,
+      "height": 230,
+      "maxWidth": 419,
       "borderRadius": 12,
       "paddingH": 20,
-      "marginTop": 0,
-      "marginBottom": 20,
-      "objectFit": "fill",
+      "marginTop": 27,
+      "marginBottom": 0,
+      "objectFit": "cover",
       "shadow": true,
       "bgColor": ""
     }

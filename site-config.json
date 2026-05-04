@@ -174,7 +174,7 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17778661072710.7670903404920082",
+          "id": "item17778663903620.7635823899018785",
           "name": "डल्ले आलु • Round Potato",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
           "badge": "sale",
@@ -186,7 +186,7 @@
           ]
         },
         {
-          "id": "item17778661072710.20959609525545564",
+          "id": "item17778663903620.5799364016761647",
           "name": "प्याज • Onion",
           "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
           "badge": "sale",
@@ -304,7 +304,7 @@
     },
     {
       "type": "youtube",
-      "src": "https://youtube.com/shorts/BYkVOtQCjw0",
+      "src": "https://www.youtube.com/shorts/BYkVOtQCjw0",
       "title": "",
       "desc": "",
       "active": true,

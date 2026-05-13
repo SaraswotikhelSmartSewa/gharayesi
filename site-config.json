@@ -8,9 +8,9 @@
     "whatsappNumber": "9709612863",
     "whatsappMessage": "Order:                      Name:                  Number:              Address:              ",
     "address": "बस्पार्कबाट मन्दिर जाने उकालो तर्फ, सरस्वतीखेल, भक्तपुर",
-    "phone": "+977 9709612863",
-    "logoUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/gharayesi/refs/heads/main/IMG_20260411_223531.png",
-    "faviconUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/gharayesi/refs/heads/main/IMG_20260411_223531.png"
+    "phone": "9709612863",
+    "logoUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Logo.png",
+    "faviconUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Logo.png"
   },
   "theme": {
     "colorCream": "#fdf6ec",
@@ -174,166 +174,258 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "item17786367394280.6715321112547753",
-          "name": "डल्ले आलु • Round Potato",
-          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130217.png?raw=true",
-          "badge": "sale",
+          "id": "item17786486017800.24150156471071726",
+          "name": "आलु (Potato)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/White%20Potatoes.png",
+          "badge": "",
           "prices": [
             {
-              "unit": "किलो • kg",
-              "price": 26
+              "unit": "किलो",
+              "price": 30
             }
           ]
         },
         {
-          "id": "item17786367394280.8154126618906071",
-          "name": "प्याज • Onion",
-          "imageUrl": "https://github.com/SaraswotikhelSmartSewa/Gharayesi/blob/main/IMG_20260411_130306.png?raw=true",
-          "badge": "sale",
-          "prices": [
-            {
-              "unit": "किलो • kg",
-              "price": 46
-            }
-          ]
-        },
-        {
-          "id": "item17786367394280.2341914211382814",
+          "id": "item17786486017800.6648607513031682",
           "name": "टमाटर (Tomato)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Tomatoes.png",
-          "badge": "hot",
+          "badge": "",
           "prices": [
             {
-              "unit": "किलो • kg",
+              "unit": "किलो",
               "price": 95
-            },
-            {
-              "unit": "पाउ • 200 gram",
-              "price": 19
             }
           ]
         },
         {
-          "id": "item17786367394280.9173001648758743",
+          "id": "item17786486017800.9774821354643162",
+          "name": "प्याज (Onion)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Onions.png",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 50
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.9623749473445868",
           "name": "बन्दाकोपी (Cabbage)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Cabbage.png",
-          "badge": "hot",
+          "badge": "",
           "prices": [
             {
-              "unit": "किलो • kg",
+              "unit": "किलो",
               "price": 50
             }
           ]
         },
         {
-          "id": "item17786367394280.35816009956722905",
+          "id": "item17786486017800.3640618775701179",
           "name": "काउली (Cauliflower)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Cauliflower.png",
-          "badge": "hot",
+          "badge": "",
           "prices": [
             {
-              "unit": "किलो • kg",
+              "unit": "किलो",
               "price": 95
             }
           ]
         },
         {
-          "id": "item17786367394280.37676785171855964",
+          "id": "item17786486017800.7665474835524888",
           "name": "लसुन (Garlic)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Garlic.png",
-          "badge": "hot",
+          "badge": "",
           "prices": [
             {
-              "unit": "किलो • kg",
+              "unit": "किलो",
               "price": 250
-            },
-            {
-              "unit": "पाउ • 200 gram",
-              "price": 50
             }
           ]
         },
         {
-          "id": "item17786367394280.5491439664343192",
+          "id": "item17786486017800.14169338123414776",
           "name": "अदुवा (Ginger)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Ginger.png",
-          "badge": "hot",
+          "badge": "",
           "prices": [
             {
-              "unit": "किलो • kg",
+              "unit": "किलो",
               "price": 190
-            },
-            {
-              "unit": "पाउ • 200 gram",
-              "price": 38
             }
           ]
         },
         {
-          "id": "item17786367394280.20701504186170328",
+          "id": "item17786486017800.714716148123248",
           "name": "हरियो खुर्सानी (Green Chilies)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Green%20Chillies.png",
-          "badge": "hot",
+          "badge": "",
           "prices": [
             {
-              "unit": "किलो • kg",
+              "unit": "किलो",
               "price": 115
-            },
-            {
-              "unit": "पाउ • 200 gram",
-              "price": 23
             }
           ]
         },
         {
-          "id": "item17786367394280.3170475632621921",
+          "id": "item17786486017800.09413563397698",
+          "name": "भेडे खुर्सानी (Capsicum)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Capsicum.png",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 120
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.71420602399143",
           "name": "भिन्डी (Ladies' Finger)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Ladies'%20Finger.png",
-          "badge": "hot",
+          "badge": "",
           "prices": [
             {
-              "unit": "किलो • kg",
+              "unit": "किलो",
               "price": 120
-            },
-            {
-              "unit": "पाउ • 200 gram",
-              "price": 24
             }
           ]
         },
         {
-          "id": "item17786367394280.8594075144153218",
+          "id": "item17786486017800.5618188467749403",
           "name": "तिते करेला (Bitter Gourd)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Bitter%20Gourd.png",
-          "badge": "hot",
+          "badge": "",
           "prices": [
             {
-              "unit": "किलो • kg",
+              "unit": "किलो",
               "price": 120
-            },
-            {
-              "unit": "पाउ • 200 gram",
-              "price": 24
             }
           ]
         },
         {
-          "id": "item17786367394280.5511595000261112",
+          "id": "item17786486017800.7766755753121685",
           "name": "कागती (Lemon)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Lemon.png",
-          "badge": "hot",
+          "badge": "",
           "prices": [
             {
-              "unit": "किलो • kg",
-              "price": 460
+              "unit": "किलो",
+              "price": 480
             },
             {
-              "unit": "पिस • Piece",
+              "unit": "पिस",
               "price": 10
-            },
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.9229156657902576",
+          "name": "घिरौँला (Sponge Gourd)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Sponge%20Gourd.jpg",
+          "badge": "",
+          "prices": [
             {
-              "unit": "पाउ • 200 gram",
-              "price": 92
+              "unit": "किलो",
+              "price": 115
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.36772810613338947",
+          "name": "पाकेको फर्सी (Ripe Pumpkin)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Orange%20Pumpkin.jpg",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 85
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.3218607155033233",
+          "name": "हरियो फर्सी (Green Pumpkins)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Green%20Pumpkin.jpg",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 70
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.739539633945732",
+          "name": "परवल",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/%E0%A4%AA%E0%A4%B0%E0%A4%B5%E0%A4%B2.jpg",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 115
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.23576160773817245",
+          "name": "काँक्रो (Cucumber)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Cucumber.jpg",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 0
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.7243341500185365",
+          "name": "भेन्टा (Eggplant)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Eggplant.png",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": -1
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.28816094130538683",
+          "name": "बोडी (Black-eyed pea)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/%E0%A4%AC%E0%A5%8B%E0%A4%A1%E0%A5%80.png",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 0
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.24697717329202973",
+          "name": "पालुङ्गो (Spinach)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Spinach.png",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": -2
+            }
+          ]
+        },
+        {
+          "id": "item17786486017800.37471790173616815",
+          "name": "गाँजर (Carrot)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Carrots.png",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 0
             }
           ]
         }

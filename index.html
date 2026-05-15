@@ -10,7 +10,7 @@
 <script>
   // Register service worker as early as possible
   if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('/Test/sw.js', { scope: '/Test/' })
+    navigator.serviceWorker.register('/gharayesi/sw.js', { scope: '/gharayesi/' })
       .then(reg => {
         reg.addEventListener('updatefound', () => {
           const newWorker = reg.installing;
@@ -1000,7 +1000,7 @@ const MNP=['बैशाख','जेष्ठ','आषाढ','श्राव�
 const ADEN=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DNP=['आइतबार','सोमबार','मंगलबार','बुधबार','बिहिबार','शुक्रबार','शनिबार'];
 const NPD=['०','१','२','३','४','५','६','७','८','९'];
-function toNP(n){return String(n).split('').map(c=>/\d/.test(c)?NPD[+c]:c).join('')}
+function toNP(n){return String(n).split('').map(c=>/\d/.gharayesi(c)?NPD[+c]:c).join('')}
 function pad2(n){return String(n).padStart(2,'0')}
 function adToBS(date){
   try{

@@ -1,5 +1,5 @@
 const CACHE = 'gharayesi-v5';
-const STATIC_ASSETS = ['/Test/', '/Test/index.html', '/Test/manifest.json'];
+const STATIC_ASSETS = ['/gharayesi/', '/gharayesi/index.html', '/gharayesi/manifest.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(

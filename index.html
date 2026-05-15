@@ -8,7 +8,22 @@
 <link rel="manifest" href="manifest.json"/>
 <meta name="theme-color" content="#2e7d45"/>
 <script>
-  // Register service worker as early as possible
+  // Register service worker + capture PWA install prompt
+  let _deferredInstallPrompt = null;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    _deferredInstallPrompt = e;
+    // Show install button if it exists in the DOM
+    const btn = document.getElementById('pwaInstallBtn');
+    if(btn) btn.style.display = 'flex';
+  });
+  window.triggerPWAInstall = function(){
+    if(!_deferredInstallPrompt) return;
+    _deferredInstallPrompt.prompt();
+    _deferredInstallPrompt.then(choice => {
+      _deferredInstallPrompt = null;
+    }).catch(()=>{});
+  };
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('/gharayesi/sw.js', { scope: '/gharayesi/' })
       .then(reg => {
@@ -1732,38 +1747,11 @@ window.renderVideos = renderVideos;
     document.body.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#3b2a1a;text-align:center;padding:20px"><div><div style="font-size:2rem;margin-bottom:12px">⚠️</div><p>Could not load site config. Please check that <strong>site-config.json</strong> is uploaded correctly.</p></div></div>';
   }
 })();
-<script>
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.ready.then(reg => {
-      reg.addEventListener('updatefound', () => {
-        const newWorker = reg.installing;
-        newWorker.addEventListener('statechange', () => {
-          if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
-            newWorker.postMessage('skipWaiting');
-            window.location.reload();
-          }
-        });
-      });
-    });
-  }
-</script>
 </script>
 <script src="chatbot.js"></script>
-
-<script>
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.ready.then(reg => {
-      reg.addEventListener('updatefound', () => {
-        const newWorker = reg.installing;
-        newWorker.addEventListener('statechange', () => {
-          if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
-            newWorker.postMessage('skipWaiting');
-            window.location.reload();
-          }
-        });
-      });
-    });
-  }
-</script>
+<button id="pwaInstallBtn" onclick="triggerPWAInstall()" style="display:none;position:fixed;bottom:90px;right:18px;z-index:9990;align-items:center;gap:8px;background:#2e7d45;color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;padding:11px 18px;border-radius:999px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(46,125,69,.45);">
+  <svg width="16" height="16" fill="#fff" viewBox="0 0 24 24"><path d="M12 2v13m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+  Install App
+</button>
 </body>
 </html>

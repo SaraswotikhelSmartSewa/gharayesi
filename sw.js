@@ -1,6 +1,5 @@
-const CACHE = 'gharayesi-v4';
+const CACHE = 'gharayesi-v5';
 const STATIC_ASSETS = ['/Test/', '/Test/index.html', '/Test/manifest.json'];
-// site-config.json is intentionally excluded — always fetch fresh
 
 self.addEventListener('install', e => {
   e.waitUntil(
@@ -11,7 +10,7 @@ self.addEventListener('install', e => {
 
 self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(keys => 
+    caches.keys().then(keys =>
       Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
     )
   );
@@ -20,13 +19,18 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if(e.request.method !== 'GET') return;
-
   const url = new URL(e.request.url);
 
-  // Always fetch fresh for site-config.json — never serve from cache
-  if(url.pathname.includes('site-config.json')){
+  // Never cache these — always live from network
+  const alwaysLive = [
+    'site-config.json',
+    'firebasedatabase.app',
+    'chatbot.js',
+    'admin.html'
+  ];
+  if(alwaysLive.some(k => url.href.includes(k))){
     e.respondWith(
-      fetch(e.request, { cache: 'no-store' })
+      fetch(e.request.url, { cache: 'no-store' })
         .catch(() => caches.match(e.request))
     );
     return;
@@ -35,9 +39,15 @@ self.addEventListener('fetch', e => {
   // Network first for everything else
   e.respondWith(
     fetch(e.request).then(res => {
-      const clone = res.clone();
-      caches.open(CACHE).then(c => c.put(e.request, clone));
+      if(res.ok){
+        const clone = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+      }
       return res;
     }).catch(() => caches.match(e.request))
   );
+});
+
+self.addEventListener('message', e => {
+  if(e.data === 'skipWaiting') self.skipWaiting();
 });

@@ -7,6 +7,24 @@
 <meta name="description" content=""/>
 <link rel="manifest" href="manifest.json"/>
 <meta name="theme-color" content="#2e7d45"/>
+<script>
+  // Register service worker as early as possible
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/Test/sw.js', { scope: '/Test/' })
+      .then(reg => {
+        reg.addEventListener('updatefound', () => {
+          const newWorker = reg.installing;
+          newWorker.addEventListener('statechange', () => {
+            if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
+              newWorker.postMessage('skipWaiting');
+              window.location.reload();
+            }
+          });
+        });
+      })
+      .catch(err => console.warn('SW registration failed:', err));
+  }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <style>   
@@ -1714,7 +1732,21 @@ window.renderVideos = renderVideos;
     document.body.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#3b2a1a;text-align:center;padding:20px"><div><div style="font-size:2rem;margin-bottom:12px">⚠️</div><p>Could not load site config. Please check that <strong>site-config.json</strong> is uploaded correctly.</p></div></div>';
   }
 })();
-if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+<script>
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.ready.then(reg => {
+      reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+        newWorker.addEventListener('statechange', () => {
+          if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
+            newWorker.postMessage('skipWaiting');
+            window.location.reload();
+          }
+        });
+      });
+    });
+  }
+</script>
 </script>
 <script src="chatbot.js"></script>
 

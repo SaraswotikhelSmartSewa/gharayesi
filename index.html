@@ -1423,14 +1423,34 @@ window.toggleLang = function(){
 
 /* ══ PWA ══ */
 let deferredPrompt = null;
+const PWA_DISMISS_KEY = 'pwa_dismissed_until';
+
+function shouldShowPWA(){
+  const until = localStorage.getItem(PWA_DISMISS_KEY);
+  if(!until) return true;
+  return Date.now() > parseInt(until);
+}
+
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();
   deferredPrompt = e;
+  if(!shouldShowPWA()) return;
   setTimeout(() => {
     const banner = document.getElementById('pwaBanner');
     if(banner) banner.classList.add('show');
   }, 3000);
 });
+
+// Also check on page load in case prompt was already fired
+window.addEventListener('load', () => {
+  if(deferredPrompt && shouldShowPWA()){
+    setTimeout(() => {
+      const banner = document.getElementById('pwaBanner');
+      if(banner) banner.classList.add('show');
+    }, 3000);
+  }
+});
+
 document.getElementById('pwaInstallBtn')?.addEventListener('click', async () => {
   if(!deferredPrompt) return;
   deferredPrompt.prompt();
@@ -1438,8 +1458,11 @@ document.getElementById('pwaInstallBtn')?.addEventListener('click', async () => 
   deferredPrompt = null;
   document.getElementById('pwaBanner').classList.remove('show');
 });
+
 window.dismissPWA = function(){
   document.getElementById('pwaBanner').classList.remove('show');
+  // Snooze the prompt for 3 days
+  localStorage.setItem(PWA_DISMISS_KEY, Date.now() + (3 * 24 * 60 * 60 * 1000));
 }
 
 /* ══ SPLASH AD ══ */

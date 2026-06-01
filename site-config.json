@@ -207,7 +207,7 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 50
+              "price": 65
             }
           ]
         },
@@ -219,7 +219,23 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 95
+              "price": 120
+            }
+          ]
+        },
+        {
+          "id": "p1778439333667",
+          "name": "भिन्डी (Ladies' Finger)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Ladies'%20Finger.png",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 85
+            },
+            {
+              "unit": "पाउ",
+              "price": 17
             }
           ]
         },
@@ -231,11 +247,11 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 105
+              "price": 115
             },
             {
               "unit": "पाउ",
-              "price": 21
+              "price": 23
             }
           ]
         },
@@ -291,11 +307,11 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 70
+              "price": 65
             },
             {
               "unit": "पाउ",
-              "price": 17
+              "price": 13
             }
           ]
         },
@@ -319,11 +335,11 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 145
+              "price": 135
             },
             {
               "unit": "पाउ",
-              "price": 29
+              "price": 27
             }
           ]
         },
@@ -478,22 +494,6 @@
               "price": 120
             }
           ]
-        },
-        {
-          "id": "p1778439333667",
-          "name": "भिन्डी (Ladies' Finger)",
-          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Ladies'%20Finger.png",
-          "badge": "",
-          "prices": [
-            {
-              "unit": "किलो",
-              "price": 120
-            },
-            {
-              "unit": "पाउ",
-              "price": 24
-            }
-          ]
         }
       ]
     },
@@ -554,7 +554,7 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 50
+              "price": 65
             }
           ]
         },
@@ -566,7 +566,7 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 95
+              "price": 120
             }
           ]
         },
@@ -638,11 +638,11 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 120
+              "price": 85
             },
             {
               "unit": "पाउ",
-              "price": 24
+              "price": 17
             }
           ]
         },
@@ -654,11 +654,11 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 105
+              "price": 115
             },
             {
               "unit": "पाउ",
-              "price": 21
+              "price": 23
             }
           ]
         },
@@ -714,11 +714,11 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 70
+              "price": 65
             },
             {
               "unit": "पाउ",
-              "price": 17
+              "price": 13
             }
           ]
         },
@@ -742,11 +742,11 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 145
+              "price": 135
             },
             {
               "unit": "पाउ",
-              "price": 29
+              "price": 27
             }
           ]
         },

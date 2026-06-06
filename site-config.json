@@ -307,11 +307,11 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 65
+              "price": 70
             },
             {
               "unit": "पाउ",
-              "price": 13
+              "price": 14
             }
           ]
         },
@@ -714,11 +714,11 @@
           "prices": [
             {
               "unit": "किलो",
-              "price": 65
+              "price": 70
             },
             {
               "unit": "पाउ",
-              "price": 13
+              "price": 14
             }
           ]
         },

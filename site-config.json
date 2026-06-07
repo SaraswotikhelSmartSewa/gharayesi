@@ -164,18 +164,6 @@
       "iconBg": "#2e7d45",
       "items": [
         {
-          "id": "p1",
-          "name": "आलु (Potato)",
-          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/White%20Potatoes.png",
-          "badge": "",
-          "prices": [
-            {
-              "unit": "किलो",
-              "price": 35
-            }
-          ]
-        },
-        {
           "id": "p2",
           "name": "टमाटर (Tomato)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Tomatoes.png",
@@ -416,6 +404,30 @@
       "iconBg": "#2e7d45",
       "items": [
         {
+          "id": "p1780810455278",
+          "name": "लाम्चो आलु (Long Potatoes)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Long%20potatoes.png",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 55
+            }
+          ]
+        },
+        {
+          "id": "p1",
+          "name": "डल्लो आलु (Round Potatoes)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/White%20Potatoes.png",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 35
+            }
+          ]
+        },
+        {
           "id": "p1778384343548",
           "name": "लसुन (Garlic)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Garlic.png",
@@ -511,8 +523,20 @@
       "iconBg": "#2e7d45",
       "items": [
         {
+          "id": "p1780810455278",
+          "name": "लाम्चो आलु (Long Potatoes)",
+          "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/Long%20potatoes.png",
+          "badge": "",
+          "prices": [
+            {
+              "unit": "किलो",
+              "price": 55
+            }
+          ]
+        },
+        {
           "id": "p1",
-          "name": "आलु (Potato)",
+          "name": "डल्लो आलु (Round Potatoes)",
           "imageUrl": "https://raw.githubusercontent.com/SaraswotikhelSmartSewa/Images/refs/heads/main/White%20Potatoes.png",
           "badge": "",
           "prices": [
